@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/EasySocial-master/EasySocial-master.iml" filepath="$PROJECT_DIR$/EasySocial-master/EasySocial-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EasySocialFacebook-Testing.iml" filepath="$PROJECT_DIR$/EasySocialFacebook-Testing.iml" />
+      <module fileurl="file://$PROJECT_DIR$/EasySocialFacebook-master/EasySocialFacebook-master.iml" filepath="$PROJECT_DIR$/EasySocialFacebook-master/EasySocialFacebook-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fitbitmodule/fitbitmodule.iml" filepath="$PROJECT_DIR$/fitbitmodule/fitbitmodule.iml" />
+    </modules>
+  </component>
+</project>
