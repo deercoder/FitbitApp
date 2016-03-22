@@ -64,11 +64,11 @@ public class MainFragment extends Fragment {
 
 
         /** Initialize Objects */
-        EasySocialCredential mCredentials = new EasySocialCredential.Builder("794159763977710",
-                "f558c2bf4d6e745186a91291dd386e80",
-                "https://www.uwanttolearn.com/").
+        EasySocialCredential mCredentials = new EasySocialCredential.Builder("227NCS",
+                "a6f5a2f9c4c8333609be680b7ee976be",
+                "https://www.cs.uml.edu/").
                 setPermissions(
-                        new String[]{"email,publish_actions,user_friends"})
+                        new String[]{"activity"})
                 .build();
 
         mEasySocialFacebook = EasySocialFacebook.getInstance(mCredentials);

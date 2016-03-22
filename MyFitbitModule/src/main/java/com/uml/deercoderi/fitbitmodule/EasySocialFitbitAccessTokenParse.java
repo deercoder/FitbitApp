@@ -2,12 +2,10 @@ package com.uml.deercoderi.fitbitmodule;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.util.Log;
 
-/**
- * Created by Hafiz Waleed Hussain on 12/8/2014.
- * This class is used as AccessToken Parser Utility.
- */
-final class EasySocialFacebookAccessTokenParse {
+
+final class EasySocialFitbitAccessTokenParse {
 
     /**
      * This method is used to parse the AccessToken from a RawData
@@ -16,7 +14,8 @@ final class EasySocialFacebookAccessTokenParse {
      */
     public static final String parseAccessToken(Intent data){
         String line = data.getStringExtra("data");
-        String url = "https://www.uwanttolearn.com?"+line;
+        Log.e("EasySocialFitbitApp", "" + line);
+        String url = "https://www.cs.uml.edu?"+line;
         Uri uri = Uri.parse(url);
         return uri.getQueryParameter("access_token");
     }
