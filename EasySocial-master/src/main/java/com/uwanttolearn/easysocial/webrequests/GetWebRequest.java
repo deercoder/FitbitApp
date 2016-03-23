@@ -1,6 +1,7 @@
 package com.uwanttolearn.easysocial.webrequests;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -45,6 +46,7 @@ public class GetWebRequest extends WebRequest{
 
             try {
                 URL url = new URL(_Url);
+                Log.e("ERROR", "GetWebRequest's doInBackground");
                 URLConnection connection = url.openConnection();
                 return inputStreamParse(connection.getInputStream());
 

@@ -1,6 +1,7 @@
 package com.uwanttolearn.easysocial.webrequests;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -46,6 +47,7 @@ public class PostWebRequest extends WebRequest{
         protected String doInBackground(Void... params) {
             try {
                 URL url = new URL(mUrl);
+                Log.e("LLL", "PostWebRequest's doInBackground is called!");
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("POST");
                 connection.setDoOutput(true);

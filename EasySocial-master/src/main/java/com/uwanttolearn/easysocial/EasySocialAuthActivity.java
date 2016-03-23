@@ -4,10 +4,11 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
+//import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.LinearLayout;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -98,7 +99,9 @@ public class EasySocialAuthActivity extends Activity implements GetAccessToken.C
     public void onComplete(String line) {
         easyWebViewClient.get_Dialog().dismiss();
         _WebView.stopLoading();
-        _WebView.destroy();
+        /** fix webview destroying issue, Chang */
+    //    _WebView.removeAllViews();
+   //     _WebView.destroy();
         try {
             Intent data = new Intent();
             data.putExtra("data", line);
@@ -109,5 +112,9 @@ public class EasySocialAuthActivity extends Activity implements GetAccessToken.C
             setResult(Activity.RESULT_CANCELED);
             finish();
         }
+    }
+
+    public void onDestroy(){
+        super.onDestroy();
     }
 }

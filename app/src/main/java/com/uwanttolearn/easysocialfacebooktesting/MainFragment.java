@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -92,7 +93,7 @@ public class MainFragment extends Fragment {
         @Override
         public void onClick(View v) {
 
-            mEasySocialFacebook.login(getActivity(),REQUEST_CODE);
+            mEasySocialFacebook.login(getActivity(), REQUEST_CODE);
 
         }
     };
@@ -104,6 +105,7 @@ public class MainFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == Activity.RESULT_OK){
             if(requestCode == REQUEST_CODE){
+                Log.e("Error", "Response OK!");
                 mResponseTextView.setText("Login Successful");
                 /** Handle the authentication response */
                 mEasySocialFacebook.loginResponseHandler(getActivity(), data);
@@ -111,8 +113,10 @@ public class MainFragment extends Fragment {
             }
         }else if(resultCode == Activity.RESULT_CANCELED){
             if(resultCode == REQUEST_CODE) {
-                Toast.makeText(getActivity(), data.getIntExtra(EasySocialAuthActivity.ERROR_CODE, 0)
-                        + "", Toast.LENGTH_LONG).show();
+                //Toast.makeText(getActivity(), data.getIntExtra(EasySocialAuthActivity.ERROR_CODE, 0)
+                //        + "", Toast.LENGTH_LONG).show();
+                String err = data.getIntExtra(EasySocialAuthActivity.ERROR_CODE, 0) + "";
+                Log.e("Error", "There is an error code = " + err );
                 //These error codes are present in WebViewClient.
                 //http://developer.android.com/reference/android/webkit/WebViewClient.html
             }

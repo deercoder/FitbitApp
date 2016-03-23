@@ -62,9 +62,9 @@ class EasySocialFitbitUrlManager {
     "client_secret=a6f5a2f9c4c8333609be680b7ee976be&" +
     "code=";
      */
-    public String getAccessTokenUrl(){
+    public String getAccessTokenUrl(){ //mark!!!
         String url = "https://api.fitbit.com/oauth2/token?";
-        return String.format(url+"client_id=%s&redirect_uri=%s&client_secret=%s&code=",
+        return String.format(url+"grant_type=authorization_code&client_id=%s&redirect_uri=%s&client_secret=%s",
                 _EasySocialCredential.getAppId(),
                 getRedirectUrl(),
                 _EasySocialCredential.getAppSecretId());

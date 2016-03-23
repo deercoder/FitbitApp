@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.util.Log;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -39,6 +40,7 @@ public class GetAccessToken extends AsyncTask<String,Void,String> {
             _Dialog = new ProgressDialog(activity);
             _Dialog.setCancelable(false);
             _Dialog.setCanceledOnTouchOutside(false);
+            Log.e("GetAccessToken", "GetAccessToken constructor is called!");
         }catch (ClassCastException e){
             throw new UnsupportedOperationException("Implement GetAccessToken.Callback interface.");
         }
@@ -54,13 +56,17 @@ public class GetAccessToken extends AsyncTask<String,Void,String> {
     protected String doInBackground(String... params) {
         URL url = null;
         try {
-            url = new URL(params[0]);
+            String tmp = "https://api.fitbit.com/oauth2/token?grant_type=authorization_code&client_id=227NCS&redirect_uri=http://www.cs.uml.edu&client_secret=a6f5a2f9c4c8333609be680b7ee976be";
+            // url = new URL(params[0]); // for debug
+            url = new URL(tmp);
+            Log.e("GetAccessToken", "doInBackground " + params[0]);
             URLConnection urlConnection = url.openConnection();
             BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
             return br.readLine();
         } catch (MalformedURLException e) {
             exceptionHandler(e);
         } catch (IOException e) {
+            /// Chang, Now it's breaking when executing the BufferedReader br = XXX...
             exceptionHandler(e);
         }
         return null;

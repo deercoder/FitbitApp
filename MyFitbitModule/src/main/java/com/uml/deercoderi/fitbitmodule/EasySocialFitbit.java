@@ -59,9 +59,9 @@ public class EasySocialFitbit {
         Intent intent = new Intent(activity, EasySocialAuthActivity.class);
         intent.putExtra(EasySocialAuthActivity.URL,_EasySocialFitbitUrlManager.getLoginUrl());
         intent.putExtra(EasySocialAuthActivity.REDIRECT_URL, _EasySocialFitbitUrlManager.getRedirectUrl());
-        intent.putExtra(EasySocialAuthActivity.ACCESS_TOKEN, _EasySocialFitbitUrlManager.getAccessTokenUrl());
+        intent.putExtra(EasySocialAuthActivity.ACCESS_TOKEN, _EasySocialFitbitUrlManager.getAccessTokenUrl()/**+EasySocialFitbitPreferenceUtility.getAccessToken(activity)*/);
         intent.putExtra(EasySocialAuthActivity.RESPONSE_TYPE, _EasySocialFitbitUrlManager.getResponseType());
-        Log.e("TAG", _EasySocialFitbitUrlManager.getLoginUrl());
+        Log.e("EasySocialFitbit::login", _EasySocialFitbitUrlManager.getLoginUrl());
         activity.startActivityForResult(intent, requestCode);
     }
 
@@ -71,7 +71,9 @@ public class EasySocialFitbit {
      * @param data Intent which get in onActivityResult method.
      */
     public void loginResponseHandler(Context context,Intent data){
+        Log.e("EEE","Coming hereeeeeeeeeeeeeeeeee!");
         String accessToken = EasySocialFitbitAccessTokenParse.parseAccessToken(data);
+        Log.e("EEE", accessToken);
         EasySocialFitbitPreferenceUtility.setAccessToken(context, accessToken);
     }
 
