@@ -15,7 +15,7 @@ final class EasySocialFitbitAccessTokenParse {
     public static final String parseAccessToken(Intent data){
         String line = data.getStringExtra("data");
         Log.e("EasySocialFitbitApp", "" + line);
-        String url = "https://www.cs.uml.edu?"+line;
+        String url = "http://www.cs.uml.edu?"+line;
         Uri uri = Uri.parse(url);
         return uri.getQueryParameter("access_token");
     }

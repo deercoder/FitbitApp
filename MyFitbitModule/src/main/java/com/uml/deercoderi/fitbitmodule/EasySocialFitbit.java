@@ -3,6 +3,7 @@ package com.uml.deercoderi.fitbitmodule;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 
 import com.uwanttolearn.easysocial.EasySocialAuthActivity;
 import com.uwanttolearn.easysocial.EasySocialCredential;
@@ -59,6 +60,8 @@ public class EasySocialFitbit {
         intent.putExtra(EasySocialAuthActivity.URL,_EasySocialFitbitUrlManager.getLoginUrl());
         intent.putExtra(EasySocialAuthActivity.REDIRECT_URL, _EasySocialFitbitUrlManager.getRedirectUrl());
         intent.putExtra(EasySocialAuthActivity.ACCESS_TOKEN, _EasySocialFitbitUrlManager.getAccessTokenUrl());
+        intent.putExtra(EasySocialAuthActivity.RESPONSE_TYPE, _EasySocialFitbitUrlManager.getResponseType());
+        Log.e("TAG", _EasySocialFitbitUrlManager.getLoginUrl());
         activity.startActivityForResult(intent, requestCode);
     }
 

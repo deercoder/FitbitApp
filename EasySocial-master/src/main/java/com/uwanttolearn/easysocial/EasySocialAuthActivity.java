@@ -31,11 +31,19 @@ public class EasySocialAuthActivity extends Activity implements GetAccessToken.C
     /** AccessTokenUrl is used to get AccessToken String for the Social Network.*/
     private String _AccessToken;
 
+    /** Fitbit, Chang, for authentication, need response type */
+    private String _ResponseType;
+
+
     /** Constants which we use for Intent data sharing */
     public static final String REDIRECT_URL = "redirect_url";
     public static final String URL = "url";
     public static final String ACCESS_TOKEN = "access_token";
     public static final String ERROR_CODE = "error_code";
+
+    /** Fitbit, by Chang, needs response_type for authentication */
+    public static final String RESPONSE_TYPE = "response_type";
+
     private EasyWebViewClient easyWebViewClient;
 
     @Override
@@ -52,11 +60,17 @@ public class EasySocialAuthActivity extends Activity implements GetAccessToken.C
         return _AccessToken;
     }
 
+    /** Fitbit, Chang, Getter function of response type */
+    public String getResponseType() {
+        return _ResponseType;
+    }
+
     // Private methods which used for different purposes like Initializations etc.
     private void initDataFromIntent(){
         _RedirectUrl = getIntent().getStringExtra(REDIRECT_URL);
         _Url = getIntent().getStringExtra(URL);
         _AccessToken = getIntent().getStringExtra(ACCESS_TOKEN);
+        _ResponseType = getIntent().getStringExtra(RESPONSE_TYPE);
 
         if(_RedirectUrl == null)
             throw new NullPointerException("Redirect Url is Null");
@@ -64,6 +78,8 @@ public class EasySocialAuthActivity extends Activity implements GetAccessToken.C
             throw new NullPointerException("Authentication Url is Null");
         if(_AccessToken == null)
             throw new NullPointerException("AccessToken Url is Null");
+        if(_ResponseType == null)
+            throw new NullPointerException("ResponseType is Null");
     }
 
     private void initWebView() {

@@ -14,9 +14,12 @@ public class EasySocialCredential {
     /** Some Social networks required special permission for special data. So we can get that from the social network api doc.*/
     private final String[] _Permissions;
 
+    /** Fitbit needs the response_type for dividing the two types of authentication (Chang) */
+    private final String _ResponseType;
+
     /** No argument constructor defined as private so use did not used*/
     private EasySocialCredential(){
-        this(new Builder(null,null,null));
+        this(new Builder(null,null,null,null));
     }
 
     /** One argument constructor*/
@@ -25,6 +28,7 @@ public class EasySocialCredential {
         this._AppSecretId = builder._AppSecretId;
         this._RedirectUrl = builder._RedirectUrl;
         this._Permissions = builder._Permissions;
+        this._ResponseType = builder._ResponseType;
     }
 
     /** Getter of redirect url */
@@ -47,6 +51,11 @@ public class EasySocialCredential {
         return _Permissions;
     }
 
+    /** Getter of Response type, for fitbit */
+    public String getResponseType() {
+        return _ResponseType;
+    }
+
     /** Builder pattern is used to create a Credential object*/
     public static class Builder{
 
@@ -54,11 +63,14 @@ public class EasySocialCredential {
         private final String _AppSecretId;
         private final String _RedirectUrl;
         private String[] _Permissions;
+        private final String _ResponseType;
 
-        public Builder(String _AppId, String _AppSecretId, String _RedirectUrl) {
+
+        public Builder(String _AppId, String _AppSecretId, String _RedirectUrl, String _ResType) {
             this._AppId = _AppId;
             this._AppSecretId = _AppSecretId;
             this._RedirectUrl = _RedirectUrl;
+            this._ResponseType = _ResType;
         }
 
         public Builder setPermissions(String[] permissions){

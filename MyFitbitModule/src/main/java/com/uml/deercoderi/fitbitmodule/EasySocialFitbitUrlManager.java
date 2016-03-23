@@ -43,7 +43,8 @@ class EasySocialFitbitUrlManager {
      */
     public String getLoginUrl() {
         String url = "https://www.fitbit.com/oauth2/authorize?";
-        return String.format(url + "client_id=%s&redirect_uri=%s&scope=activity",
+        return String.format(url + "response_type=%s&client_id=%s&redirect_uri=%s&scope=activity",
+                _EasySocialCredential.getResponseType(),
                 _EasySocialCredential.getAppId(),
                 _EasySocialCredential.getRedirectUrl());
     }
@@ -68,6 +69,15 @@ class EasySocialFitbitUrlManager {
                 getRedirectUrl(),
                 _EasySocialCredential.getAppSecretId());
     }
+
+    /**
+     * This method create response type and return as String.
+     * @return
+     */
+    public String getResponseType(){
+        return _EasySocialCredential.getResponseType();
+    }
+
 
     /**
      * This method create UserInfo Url and return as String.
