@@ -6,6 +6,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.util.Log;
 import android.view.View;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
@@ -29,6 +30,7 @@ class EasyWebViewClient extends WebViewClient {
         _Dialog = new ProgressDialog(_EasySocialAuthActivity);
         _Dialog.setCancelable(false);
         _Dialog.setCanceledOnTouchOutside(false);
+        Log.e("LLL", "Start creating the EasyWebViewClient");
 
     }
 
@@ -47,7 +49,13 @@ class EasyWebViewClient extends WebViewClient {
 
         if(host.equals(callbackHost)){
             String code = uri.getQueryParameter("code");
+            Log.e("EasyWebView", "the code/token is " + code);
             GetAccessToken getAccessToken = new GetAccessToken(_EasySocialAuthActivity);
+            //Chang, locate the issue of fitbit's wrong url
+            Log.e("EasyWebViewClient", "Creating the GetAccessToken object, " +url);
+
+            //Chang, the following url(getAccessToken()+code) is what we think should be access_token
+            // request, but in the code is null
             getAccessToken.execute(_EasySocialAuthActivity.getAccessToken()+code);
         }
         return super.shouldOverrideUrlLoading(view, url);
