@@ -61,8 +61,9 @@ public class GetAccessToken extends AsyncTask<String,Void,String> {
             // url = new URL(tmp); // no use, debug is over
             Log.e("GetAccessToken", "doInBackground " + params[0]);
             URLConnection urlConnection = url.openConnection();
-            BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-            return br.readLine();
+        //    BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+        //    return br.readLine();
+            return params[0];
         } catch (MalformedURLException e) {
             exceptionHandler(e);
         } catch (IOException e) {
