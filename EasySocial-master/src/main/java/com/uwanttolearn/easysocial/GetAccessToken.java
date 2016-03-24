@@ -56,9 +56,9 @@ public class GetAccessToken extends AsyncTask<String,Void,String> {
     protected String doInBackground(String... params) {
         URL url = null;
         try {
-            String tmp = "https://api.fitbit.com/oauth2/token?grant_type=authorization_code&client_id=227NCS&redirect_uri=http://www.cs.uml.edu&client_secret=a6f5a2f9c4c8333609be680b7ee976be";
-            // url = new URL(params[0]); // for debug
-            url = new URL(tmp);
+            //String tmp = "https://api.fitbit.com/oauth2/token?grant_type=authorization_code&client_id=227NCS&redirect_uri=http://www.cs.uml.edu&client_secret=a6f5a2f9c4c8333609be680b7ee976be";
+            url = new URL(params[0]); // for debug
+            // url = new URL(tmp); // no use, debug is over
             Log.e("GetAccessToken", "doInBackground " + params[0]);
             URLConnection urlConnection = url.openConnection();
             BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));

@@ -64,7 +64,7 @@ class EasySocialFitbitUrlManager {
      */
     public String getAccessTokenUrl(){ //mark!!!
         String url = "https://api.fitbit.com/oauth2/token?";
-        return String.format(url+"grant_type=authorization_code&client_id=%s&redirect_uri=%s&client_secret=%s",
+        return String.format(url+"grant_type=authorization_code&client_id=%s&redirect_uri=%s&client_secret=%s&code=",
                 _EasySocialCredential.getAppId(),
                 getRedirectUrl(),
                 _EasySocialCredential.getAppSecretId());

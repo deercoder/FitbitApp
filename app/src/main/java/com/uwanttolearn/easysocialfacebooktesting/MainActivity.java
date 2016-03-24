@@ -3,6 +3,7 @@ package com.uwanttolearn.easysocialfacebooktesting;
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 /**
@@ -20,6 +21,7 @@ public class MainActivity extends Activity {
                     .commit();
         }
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

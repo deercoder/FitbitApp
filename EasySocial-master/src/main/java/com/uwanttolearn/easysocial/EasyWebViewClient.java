@@ -48,7 +48,13 @@ class EasyWebViewClient extends WebViewClient {
         String callbackHost = callbackUri.getHost();
 
         if(host.equals(callbackHost)){
-            String code = uri.getQueryParameter("code");
+            Uri shortUri =  Uri.parse(url);
+            String fragment = shortUri.getFragment();    // get only the string after `#`
+            // remaining part is like:
+            // scope=activity&user_id=3CNXJX&token_type=Bearer&expires_in=86400&access_token=
+            // eyJhbGciOiJIUzI1Ni.BZghP9uiOW_dfH0jE3SnoquG
+            int indexOfToken = fragment.indexOf("access_token");
+            String code = fragment.substring(indexOfToken + 13, fragment.length());// add length of access_token=
             Log.e("EasyWebView", "the code/token is " + code);
             GetAccessToken getAccessToken = new GetAccessToken(_EasySocialAuthActivity);
             //Chang, locate the issue of fitbit's wrong url
