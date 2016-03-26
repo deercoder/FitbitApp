@@ -46,13 +46,17 @@ public class GetWebRequest extends WebRequest{
 
             try {
                 URL url = new URL(_Url);
-                Log.e("ERROR", "GetWebRequest's doInBackground");
                 URLConnection connection = url.openConnection();
-                return inputStreamParse(connection.getInputStream());
+                Log.e("GetWebRequest", "GetWebRequest's doInBackground " + url.toString());
+                /// Mark: It seems that it will call WebRequest's parse function
+                // It seems here it get IOException, so return null
+                String result = inputStreamParse(connection.getInputStream());
+                return result;
 
             } catch (MalformedURLException e) {
                 return null;
             } catch (IOException e) {
+                Log.e("GetWebRequest", "GetWebRequest's doInBackground returns null, cause error!");
                 return null;
             }
         }
@@ -60,6 +64,7 @@ public class GetWebRequest extends WebRequest{
         @Override
         protected void onPostExecute(String result) {
             super.onPostExecute(result);
+            Log.e("GetWebRequest", "GetWebRequest's onPostExecute() gets null pass!");
             _Callback.requestComplete(result);
         }
     }

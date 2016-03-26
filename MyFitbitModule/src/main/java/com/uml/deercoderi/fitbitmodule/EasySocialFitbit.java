@@ -96,7 +96,9 @@ public class EasySocialFitbit {
             @Override
             public void requestComplete(String line) {
                 try {
-                    JSONObject jsonObject = new JSONObject(line);
+                    // Chang, to be fixed here, it's null!!
+                    Log.e("EasySocialFitbit", "callback line " + line);
+                    JSONObject jsonObject = new JSONObject(line); // Chang, if I use "aaa" value, it will pass, but wrong value
                     userInfoCallback.onComplete(jsonObject);
                 } catch (JSONException e) {
                     e.printStackTrace();

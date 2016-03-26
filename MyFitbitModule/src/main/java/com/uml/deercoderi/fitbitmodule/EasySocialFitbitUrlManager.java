@@ -7,9 +7,7 @@ import com.uwanttolearn.easysocial.EasySocialCredential;
 class EasySocialFitbitUrlManager {
 
     /** Constants */
-    private static final String FITBIT_API_VERSION_NUMBER = "v2.0";
-    private static final String FITBIT_GRAPH_SERVER = "https://graph.facebook.com/";
-    private static final String FITBIT_REQUEST_URL =  FITBIT_GRAPH_SERVER+FITBIT_API_VERSION_NUMBER+"/";
+    private static final String FITBIT_REQUEST_URL =  "https://api.fitbitcom/1/user/-/";
 
     /** EasySocialCredential object containing info of Social Network credentials */
     private EasySocialCredential _EasySocialCredential;
@@ -85,7 +83,7 @@ class EasySocialFitbitUrlManager {
      * @return
      */
     public String getUserInfoUrl(Context context){
-        return FITBIT_REQUEST_URL+"me?"+getAccessTokenAsUrlParameter(context);
+        return "https://api.fitbit.com/1/user/-/activities/frequent.json";
     }
 
     /**

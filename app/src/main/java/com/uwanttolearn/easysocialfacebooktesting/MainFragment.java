@@ -56,6 +56,9 @@ public class MainFragment extends Fragment {
         /** Setup views */
         mLoginButton.setOnClickListener(onLoginButtonClick);
 
+        /* set up listener */
+        mGetUserInfoButton.setOnClickListener(onGetUserInfoClick);
+
         progressDialog.setCancelable(false);
         progressDialog.setCanceledOnTouchOutside(false);
 
@@ -66,7 +69,7 @@ public class MainFragment extends Fragment {
                 "http://www.cs.uml.edu",
                 "token").
                 setPermissions(
-                        new String[]{"activity"})
+                        new String[]{"activity", "heartrate", "sleep"})
                 .build();
 
         mEasySocialFacebook = EasySocialFitbit.getInstance(mCredentials);
@@ -97,6 +100,44 @@ public class MainFragment extends Fragment {
 
         }
     };
+
+
+    /***
+     * click listener for GetInfo Button
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
+    private View.OnClickListener onGetUserInfoClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            Log.e("LLL", "GetUserInfo is clicked!");
+
+            mEasySocialFacebook.getUserInfo(getActivity(),
+                    new EasySocialFitbit.UserInfoCallback() {
+                        @Override
+                        public void onComplete(JSONObject jsonObject) {
+                            Log.e("LLL", "onGetUserInfoClick's onComplete is clicked!");
+                            if(jsonObject == null){
+                                mResponseTextView.setText("UserInfo null");
+                            }else{
+                                mResponseTextView.setText(jsonObject.toString());
+                                mUserId = jsonObject.optString("id");
+                                if(mUserId != null){
+                                    enableButton(mGetFriendsButton);
+                                    enableButton(mPostMessageButton);
+                                }
+                            }
+                            progressDialog.dismiss();
+                        }
+                    });
+            progressDialog.show();
+
+        }
+    };
+
+
 
 
 

@@ -1,5 +1,7 @@
 package com.uwanttolearn.easysocial.webrequests;
 
+import android.util.Log;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -24,9 +26,13 @@ public abstract class WebRequest {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
         try {
             String line = bufferedReader.readLine();
-            return line;
+            Log.e("WebRequest", "WebRequest's inputStreamParse " + line);
+            //return line;
+            // for debugging, now let's check whether it crashes when returning the value
+            return "NULL!";
         } catch (IOException e) {
             e.printStackTrace();
+            Log.e("WebRequest", "Now crashes!");
             return null;
         }
     }
