@@ -17,7 +17,6 @@ import android.widget.Toast;
 import com.uml.deercoderi.fitbitmodule.EasySocialFitbit;
 import com.uwanttolearn.easysocial.EasySocialAuthActivity;
 import com.uwanttolearn.easysocial.EasySocialCredential;
-import com.uwanttolearn.easysocialfacebook.EasySocialFacebook;
 
 import org.json.JSONObject;
 
@@ -69,7 +68,7 @@ public class MainFragment extends Fragment {
                 "http://www.cs.uml.edu",
                 "token").
                 setPermissions(
-                        new String[]{"activity", "heartrate", "sleep"})
+                        new String[]{"activity", "nutrition", "heartrate", "location","sleep", "profile", "setting", "social", "weight"})
                 .build();
 
         mEasySocialFacebook = EasySocialFitbit.getInstance(mCredentials);

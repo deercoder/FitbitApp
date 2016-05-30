@@ -1,1 +1,1 @@
-include ':app', ':EasySocial-master', ':EasySocialFacebook-master', ':MyFitbitModule'
+include ':app', ':EasySocial-master', ':MyFitbitModule'

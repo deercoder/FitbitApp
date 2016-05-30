@@ -3,8 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/EasySocial-master/EasySocial-master.iml" filepath="$PROJECT_DIR$/EasySocial-master/EasySocial-master.iml" />
-      <module fileurl="file://$PROJECT_DIR$/EasySocialFacebook-Testing.iml" filepath="$PROJECT_DIR$/EasySocialFacebook-Testing.iml" />
-      <module fileurl="file://$PROJECT_DIR$/EasySocialFacebook-master/EasySocialFacebook-master.iml" filepath="$PROJECT_DIR$/EasySocialFacebook-master/EasySocialFacebook-master.iml" />
+      <module fileurl="file:///media/changliu/Research/github/FitbitApp/FitbitApp.iml" filepath="/media/changliu/Research/github/FitbitApp/FitbitApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/MyFitbitModule/MyFitbitModule.iml" filepath="$PROJECT_DIR$/MyFitbitModule/MyFitbitModule.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
