@@ -61,7 +61,7 @@ public class EasySocialFitbit {
         intent.putExtra(EasySocialAuthActivity.REDIRECT_URL, _EasySocialFitbitUrlManager.getRedirectUrl());
         intent.putExtra(EasySocialAuthActivity.ACCESS_TOKEN, _EasySocialFitbitUrlManager.getAccessTokenUrl()/**+EasySocialFitbitPreferenceUtility.getAccessToken(activity)*/);
         intent.putExtra(EasySocialAuthActivity.RESPONSE_TYPE, _EasySocialFitbitUrlManager.getResponseType());
-        Log.e("EasySocialFitbit::login", _EasySocialFitbitUrlManager.getLoginUrl());
+        Log.e("LLL:", "EasySocialFitbit::login" + _EasySocialFitbitUrlManager.getLoginUrl());
         activity.startActivityForResult(intent, requestCode);
     }
 

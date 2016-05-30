@@ -1,4 +1,4 @@
-package com.uwanttolearn.easysocialfacebook;
+package com.uwanttolearn.fitbit;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

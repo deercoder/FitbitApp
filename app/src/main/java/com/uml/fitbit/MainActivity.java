@@ -1,14 +1,11 @@
-package com.uwanttolearn.easysocialfacebooktesting;
+package com.uml.fitbit;
 
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 
-/**
- * Created by Hafiz Waleed Hussain on 12/12/2014.
- */
+
 public class MainActivity extends Activity {
 
     @Override
