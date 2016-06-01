@@ -1,6 +1,7 @@
 package com.uml.deercoderi.fitbitmodule;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.uwanttolearn.easysocial.EasySocialCredential;
 
@@ -8,6 +9,20 @@ class EasySocialFitbitUrlManager {
 
     /** Constants */
     private static final String FITBIT_REQUEST_URL =  "https://api.fitbitcom/1/user/-/";
+
+    /** Constants for Fitbit URL, Chang */
+    private static final String FITBIT_LOGIN_URL = "https://www.fitbit.com/oauth2/authorize?";
+
+    /** Constants for Fitbit Login Key field */
+    private static final String RESPONSE_TYPE = "response_type";
+    private static final String CLIENT_ID = "client_id";
+    private static final String REDIRECT_URL = "redirect_uri";
+    private static final String SCOPE = "scope";
+
+    /** Constatns for Fitbit Access Token Key Field */
+    private static final String FITBIT_ACCESS_TOKEN_URL = "https://api.fitbit.com/oauth2/token?";
+    private static final String AUTHORIZATION_CODE = "code";
+    private static final String GRANT_TYPE = "grant_type";
 
     /** EasySocialCredential object containing info of Social Network credentials */
     private EasySocialCredential _EasySocialCredential;
@@ -40,11 +55,19 @@ class EasySocialFitbitUrlManager {
     "expires_in=604800";
      */
     public String getLoginUrl() {
-        String url = "https://www.fitbit.com/oauth2/authorize?";
-        return String.format(url + "response_type=%s&client_id=%s&redirect_uri=%s&scope=activity",
-                _EasySocialCredential.getResponseType(),
-                _EasySocialCredential.getAppId(),
-                _EasySocialCredential.getRedirectUrl());
+
+        /** get all necessary information for login */
+        String responseType = _EasySocialCredential.getResponseType();
+        String appId = _EasySocialCredential.getAppId();
+        String redirectUrl = _EasySocialCredential.getRedirectUrl();
+        String permissions = getPermissionsAsString(_EasySocialCredential.getPermissions());
+
+        Log.e("FitbitUrlManager", "permissions = " + permissions);
+
+        /** construct the String that will be used for login */
+        return String.format(FITBIT_LOGIN_URL + RESPONSE_TYPE + "=%s&"
+                + CLIENT_ID + "=%s&" + REDIRECT_URL + "=%s&" + SCOPE + "=%s",
+                responseType, appId, redirectUrl, permissions);
     }
 
     /**
@@ -61,11 +84,16 @@ class EasySocialFitbitUrlManager {
     "code=";
      */
     public String getAccessTokenUrl(){ //mark!!!
-        String url = "https://api.fitbit.com/oauth2/token?";
-        return String.format(url+"grant_type=authorization_code&client_id=%s&redirect_uri=%s&client_secret=%s&code=",
-                _EasySocialCredential.getAppId(),
-                getRedirectUrl(),
-                _EasySocialCredential.getAppSecretId());
+
+        /** This must be obtained from redirect_url tha contained the authorization code */
+        String  authCode = "XXXXXXXXX";
+        String  clientId = _EasySocialCredential.getAppId();
+        String  grantType = "authorization_code";
+        String  redirectUrl = _EasySocialCredential.getRedirectUrl();
+
+        return String.format(FITBIT_ACCESS_TOKEN_URL + GRANT_TYPE + "=" + grantType + "&"
+                + CLIENT_ID + "=%s&" + REDIRECT_URL + "=%s&" + AUTHORIZATION_CODE + "=" + authCode,
+                clientId, redirectUrl, authCode);
     }
 
     /**
@@ -106,7 +134,8 @@ class EasySocialFitbitUrlManager {
         if (permissions == null) return "";
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < permissions.length; i++) {
-            stringBuilder.append(permissions[i] + ",");
+            // Chang, fix the bug, here the scope must be concated with "+" instead of ","
+            stringBuilder.append(permissions[i] + "+");
         }
         try {
             stringBuilder.deleteCharAt(stringBuilder.length() - 1);

@@ -22,7 +22,7 @@ import org.json.JSONObject;
 
 public class MainFragment extends Fragment {
 
-    /** Views */
+    /** Buttons */
     private Button mLoginButton;
     private Button mGetUserInfoButton;
     private Button mGetFriendsButton;
@@ -30,9 +30,11 @@ public class MainFragment extends Fragment {
     private Button mGetUserImageButton;
     private TextView mResponseTextView;
     private ProgressDialog progressDialog;
+
     /** Objects */
     private EasySocialFitbit mEasySocialFacebook;
     private String mUserId = null;
+
     /** Constants */
     public static final int REQUEST_CODE = 2;
 
@@ -41,7 +43,8 @@ public class MainFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-        /** Initialize Views */
+
+        /** Init the button */
         mLoginButton = (Button) rootView.findViewById(R.id.MainFragment_login_button);
         mGetUserInfoButton = (Button) rootView.findViewById(R.id.MainFragment_get_user_info_button);
         mGetFriendsButton = (Button) rootView.findViewById(R.id.MainFragment_get_friends_button);
@@ -56,17 +59,18 @@ public class MainFragment extends Fragment {
         /* set up listener */
         mGetUserInfoButton.setOnClickListener(onGetUserInfoClick);
 
+        /** set the dialog status */
         progressDialog.setCancelable(false);
         progressDialog.setCanceledOnTouchOutside(false);
 
 
-        /** Initialize Objects */
+        /** Initialize Objects, (AppId, secretId, redirect_url, responsetype) */
         EasySocialCredential mCredentials = new EasySocialCredential.Builder("227NCS",
                 "a6f5a2f9c4c8333609be680b7ee976be",
                 "http://www.cs.uml.edu",
                 "token").
                 setPermissions(
-                        new String[]{"activity", "nutrition", "heartrate", "location","sleep", "profile", "setting", "social", "weight"})
+                        new String[]{"activity", "nutrition", "heartrate", "location","sleep", "profile", "settings", "social", "weight"})
                 .build();
 
         mEasySocialFacebook = EasySocialFitbit.getInstance(mCredentials);
@@ -109,13 +113,13 @@ public class MainFragment extends Fragment {
         @Override
         public void onClick(View v) {
 
-            Log.e("LLL", "GetUserInfo is clicked!");
+            Log.e("MainFragment", "GetUserInfo is clicked!");
 
             mEasySocialFacebook.getUserInfo(getActivity(),
                     new EasySocialFitbit.UserInfoCallback() {
                         @Override
                         public void onComplete(JSONObject jsonObject) {
-                            Log.e("LLL", "onGetUserInfoClick's onComplete is clicked!");
+                            Log.e("MainFragment", "onGetUserInfoClick's onComplete is clicked!");
                             if(jsonObject == null){
                                 mResponseTextView.setText("UserInfo null");
                             }else{
@@ -143,7 +147,7 @@ public class MainFragment extends Fragment {
         super.onActivityResult(requestCode, resultCode, data);
         if(resultCode == Activity.RESULT_OK){
             if(requestCode == REQUEST_CODE){
-                Log.e("Error", "Response OK!");
+                Log.e("MainFragment", "Response OK!");
                 mResponseTextView.setText("Login Successful");
                 /** Handle the authentication response */
                 mEasySocialFacebook.loginResponseHandler(getActivity(), data);
@@ -154,7 +158,7 @@ public class MainFragment extends Fragment {
                 //Toast.makeText(getActivity(), data.getIntExtra(EasySocialAuthActivity.ERROR_CODE, 0)
                 //        + "", Toast.LENGTH_LONG).show();
                 String err = data.getIntExtra(EasySocialAuthActivity.ERROR_CODE, 0) + "";
-                Log.e("Error", "There is an error code = " + err );
+                Log.e("MainFragment", "There is an error code = " + err );
                 //These error codes are present in WebViewClient.
                 //http://developer.android.com/reference/android/webkit/WebViewClient.html
             }
@@ -162,9 +166,14 @@ public class MainFragment extends Fragment {
     }
 
     /**
-     * Private methods
+     * set button status
      * @param button
      */
-    private void disableButton(Button button){button.setEnabled(false);}
-    private void enableButton(Button button){button.setEnabled(true);}
+    private void disableButton(Button button) {
+        button.setEnabled(false);
+    }
+
+    private void enableButton(Button button){
+        button.setEnabled(true);
+    }
 }

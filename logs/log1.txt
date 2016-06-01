@@ -1,0 +1,127 @@
+05-31 23:39:01.401 2387-2387/com.uwanttolearn.easysocialfacebooktesting E/LLL:: EasySocialFitbit::loginhttps://www.fitbit.com/oauth2/authorize?response_type=token&client_id=227NCS&redirect_uri=http://www.cs.uml.edu&scope=activity
+05-31 23:39:01.402 2387-2387/com.uwanttolearn.easysocialfacebooktesting I/Timeline: Timeline: Activity_launch_request time:6120065
+05-31 23:39:01.456 2387-2387/com.uwanttolearn.easysocialfacebooktesting I/WebViewFactory: Loading com.google.android.webview version 50.0.2661.86 (code 266108600)
+05-31 23:39:01.569 2387-2387/com.uwanttolearn.easysocialfacebooktesting I/cr_LibraryLoader: Time to load native libraries: 5 ms (timestamps 227-232)
+05-31 23:39:01.569 2387-2387/com.uwanttolearn.easysocialfacebooktesting I/cr_LibraryLoader: Expected native library version number "50.0.2661.86", actual native library version number "50.0.2661.86"
+05-31 23:39:01.585 2387-2387/com.uwanttolearn.easysocialfacebooktesting V/WebViewChromiumFactoryProvider: Binding Chromium to main looper Looper (main, tid 1) {f746559}
+05-31 23:39:01.585 2387-2387/com.uwanttolearn.easysocialfacebooktesting I/cr_LibraryLoader: Expected native library version number "50.0.2661.86", actual native library version number "50.0.2661.86"
+05-31 23:39:01.590 2387-2387/com.uwanttolearn.easysocialfacebooktesting I/chromium: [INFO:library_loader_hooks.cc(143)] Chromium logging enabled: level = 0, default verbosity = 0
+05-31 23:39:01.606 2387-2387/com.uwanttolearn.easysocialfacebooktesting I/cr_BrowserStartup: Initializing chromium process, singleProcess=true
+05-31 23:39:01.625 2387-2387/com.uwanttolearn.easysocialfacebooktesting E/ApkAssets: Error while loading asset assets/natives_blob_64.bin: java.io.FileNotFoundException: assets/natives_blob_64.bin
+05-31 23:39:01.626 2387-2387/com.uwanttolearn.easysocialfacebooktesting E/ApkAssets: Error while loading asset assets/snapshot_blob_64.bin: java.io.FileNotFoundException: assets/snapshot_blob_64.bin
+05-31 23:39:01.747 2387-2922/com.uwanttolearn.easysocialfacebooktesting W/cr_media: Requires BLUETOOTH permission
+05-31 23:39:01.821 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:30] Constructor
+05-31 23:39:01.833 2387-2387/com.uwanttolearn.easysocialfacebooktesting W/cr_AwContents: onDetachedFromWindow called when already detached. Ignoring
+05-31 23:39:01.835 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:59] isActive: false
+05-31 23:39:01.836 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/EgretLoader: EgretLoader(Context context)
+05-31 23:39:01.845 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/EgretLoader: The context is not activity
+05-31 23:39:01.853 2387-2387/com.uwanttolearn.easysocialfacebooktesting E/LLL: Start creating the EasyWebViewClient
+05-31 23:39:01.866 2387-2387/com.uwanttolearn.easysocialfacebooktesting I/cr_Ime: ImeThread is not enabled.
+05-31 23:39:01.884 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/ActivityThreadInjector: clearCachedDrawables.
+05-31 23:39:01.955 2387-2941/com.uwanttolearn.easysocialfacebooktesting E/libEGL: validate_display:255 error 3008 (EGL_BAD_DISPLAY)
+05-31 23:39:01.997 2387-2581/com.uwanttolearn.easysocialfacebooktesting D/OpenGLRenderer: endAllStagingAnimators on 0xaa6e9480 (RippleDrawable) with handle 0xaa47bbd0
+05-31 23:39:02.029 2387-2387/com.uwanttolearn.easysocialfacebooktesting V/BoostFramework: BoostFramework() : mPerf = com.qualcomm.qti.Performance@9026a73
+05-31 23:39:02.029 2387-2387/com.uwanttolearn.easysocialfacebooktesting V/BoostFramework: BoostFramework() : mPerf = com.qualcomm.qti.Performance@a688d30
+05-31 23:39:02.524 2387-2387/com.uwanttolearn.easysocialfacebooktesting W/cr_BindingManager: Cannot call determinedVisibility() - never saw a connection for the pid: 2387
+05-31 23:39:02.524 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:59] isActive: false
+05-31 23:39:06.305 2387-2387/com.uwanttolearn.easysocialfacebooktesting I/chromium: [INFO:CONSOLE(56)] "Uncaught TypeError: Cannot read property 'getItem' of null", source: https://www.fitbit.com/login?redirect=%2Foauth2%2Fauthorize%3Fclient_id%3D227NCS%26expires_in%26redirect_uri%3Dhttp%253A%252F%252Fwww.cs.uml.edu%26response_type%3Dtoken%26scope%3Dactivity%26state (56)
+05-31 23:39:07.432 2387-2387/com.uwanttolearn.easysocialfacebooktesting I/chromium: [INFO:CONSOLE(0)] "Synchronous XMLHttpRequest on the main thread is deprecated because of its detrimental effects to the end user's experience. For more help, check https://xhr.spec.whatwg.org/.", source:  (0)
+05-31 23:39:07.625 2387-2387/com.uwanttolearn.easysocialfacebooktesting I/chromium: [INFO:CONSOLE(0)] "'window.webkitStorageInfo' is deprecated. Please use 'navigator.webkitTemporaryStorage' or 'navigator.webkitPersistentStorage' instead.", source:  (0)
+05-31 23:39:07.627 2387-2387/com.uwanttolearn.easysocialfacebooktesting I/chromium: [INFO:CONSOLE(0)] "'webkitIndexedDB' is deprecated. Please use 'indexedDB' instead.", source:  (0)
+05-31 23:39:11.946 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:42] restartInput
+05-31 23:39:11.948 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:50] showSoftInput
+05-31 23:39:11.954 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [0, 0], COM [-1, -1]
+05-31 23:39:14.139 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [1, 1], COM [-1, -1]
+05-31 23:39:14.140 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [1, 1], COM [-1, -1]
+05-31 23:39:14.408 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [2, 2], COM [-1, -1]
+05-31 23:39:14.408 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [2, 2], COM [-1, -1]
+05-31 23:39:14.859 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [3, 3], COM [-1, -1]
+05-31 23:39:14.861 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [3, 3], COM [-1, -1]
+05-31 23:39:15.113 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [4, 4], COM [-1, -1]
+05-31 23:39:15.114 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [4, 4], COM [-1, -1]
+05-31 23:39:15.500 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [5, 5], COM [-1, -1]
+05-31 23:39:15.500 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [5, 5], COM [-1, -1]
+05-31 23:39:15.833 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [6, 6], COM [-1, -1]
+05-31 23:39:15.833 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [6, 6], COM [-1, -1]
+05-31 23:39:16.200 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [7, 7], COM [-1, -1]
+05-31 23:39:16.201 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [7, 7], COM [-1, -1]
+05-31 23:39:16.495 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [8, 8], COM [-1, -1]
+05-31 23:39:16.496 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [8, 8], COM [-1, -1]
+05-31 23:39:18.682 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [9, 9], COM [-1, -1]
+05-31 23:39:18.682 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [9, 9], COM [-1, -1]
+05-31 23:39:18.686 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [9, 9], COM [-1, -1]
+05-31 23:39:19.519 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [10, 10], COM [-1, -1]
+05-31 23:39:19.520 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [10, 10], COM [-1, -1]
+05-31 23:39:19.850 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [11, 11], COM [-1, -1]
+05-31 23:39:19.850 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [11, 11], COM [-1, -1]
+05-31 23:39:20.120 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [12, 12], COM [-1, -1]
+05-31 23:39:20.120 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [12, 12], COM [-1, -1]
+05-31 23:39:20.389 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [13, 13], COM [-1, -1]
+05-31 23:39:20.389 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [13, 13], COM [-1, -1]
+05-31 23:39:20.670 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [14, 14], COM [-1, -1]
+05-31 23:39:20.671 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [14, 14], COM [-1, -1]
+05-31 23:39:21.204 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [15, 15], COM [-1, -1]
+05-31 23:39:21.205 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [15, 15], COM [-1, -1]
+05-31 23:39:21.539 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [16, 16], COM [-1, -1]
+05-31 23:39:21.539 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [16, 16], COM [-1, -1]
+05-31 23:39:21.832 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [17, 17], COM [-1, -1]
+05-31 23:39:21.833 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [17, 17], COM [-1, -1]
+05-31 23:39:22.083 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [18, 18], COM [-1, -1]
+05-31 23:39:22.083 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [18, 18], COM [-1, -1]
+05-31 23:39:22.972 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:42] restartInput
+05-31 23:39:23.010 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [18, 18], COM [-1, -1]
+05-31 23:39:23.046 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:42] restartInput
+05-31 23:39:23.048 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:50] showSoftInput
+05-31 23:39:23.050 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [0, 0], COM [-1, -1]
+05-31 23:39:23.052 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [0, 0], COM [-1, -1]
+05-31 23:39:23.053 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [0, 0], COM [-1, -1]
+05-31 23:39:23.943 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [1, 1], COM [-1, -1]
+05-31 23:39:23.943 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [1, 1], COM [-1, -1]
+05-31 23:39:24.290 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [2, 2], COM [-1, -1]
+05-31 23:39:24.290 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [2, 2], COM [-1, -1]
+05-31 23:39:24.698 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [3, 3], COM [-1, -1]
+05-31 23:39:24.699 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [3, 3], COM [-1, -1]
+05-31 23:39:25.200 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [4, 4], COM [-1, -1]
+05-31 23:39:25.201 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [4, 4], COM [-1, -1]
+05-31 23:39:25.642 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [5, 5], COM [-1, -1]
+05-31 23:39:25.643 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [5, 5], COM [-1, -1]
+05-31 23:39:26.057 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [6, 6], COM [-1, -1]
+05-31 23:39:26.058 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [6, 6], COM [-1, -1]
+05-31 23:39:27.284 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [7, 7], COM [-1, -1]
+05-31 23:39:27.284 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [7, 7], COM [-1, -1]
+05-31 23:39:27.576 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [8, 8], COM [-1, -1]
+05-31 23:39:27.577 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [8, 8], COM [-1, -1]
+05-31 23:39:27.926 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [9, 9], COM [-1, -1]
+05-31 23:39:27.926 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [9, 9], COM [-1, -1]
+05-31 23:39:28.102 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [10, 10], COM [-1, -1]
+05-31 23:39:28.103 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [10, 10], COM [-1, -1]
+05-31 23:39:28.472 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [11, 11], COM [-1, -1]
+05-31 23:39:28.473 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [11, 11], COM [-1, -1]
+05-31 23:39:28.686 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [12, 12], COM [-1, -1]
+05-31 23:39:28.686 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:77] updateSelection: SEL [12, 12], COM [-1, -1]
+05-31 23:39:29.439 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:59] isActive: true
+05-31 23:39:29.439 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:68] hideSoftInputFromWindow
+05-31 23:39:29.442 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:42] restartInput
+05-31 23:39:29.466 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:59] isActive: true
+05-31 23:39:29.466 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:68] hideSoftInputFromWindow
+05-31 23:39:29.919 2387-2387/com.uwanttolearn.easysocialfacebooktesting W/cr_BindingManager: Cannot call determinedVisibility() - never saw a connection for the pid: 2387
+05-31 23:39:29.921 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:59] isActive: true
+05-31 23:39:29.921 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:68] hideSoftInputFromWindow
+05-31 23:39:39.178 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:59] isActive: true
+05-31 23:39:39.179 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:68] hideSoftInputFromWindow
+05-31 23:39:39.207 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:59] isActive: true
+05-31 23:39:39.207 2387-2387/com.uwanttolearn.easysocialfacebooktesting D/cr_Ime: [InputMethodManagerWrapper.java:68] hideSoftInputFromWindow
+05-31 23:39:39.285 2387-2387/com.uwanttolearn.easysocialfacebooktesting E/EasyWebView: the code/token is eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0NjQ4Mzg3ODAsInNjb3BlcyI6IndhY3QiLCJzdWIiOiIzQ05YSlgiLCJhdWQiOiIyMjdOQ1MiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJpYXQiOjE0NjQ3NTIzODB9.ypAjTPlkr8CgORouTAGpk_tOrBbzbA9qWDLmU87nz5U
+05-31 23:39:39.290 2387-2387/com.uwanttolearn.easysocialfacebooktesting E/GetAccessToken: GetAccessToken constructor is called!
+05-31 23:39:39.291 2387-2387/com.uwanttolearn.easysocialfacebooktesting E/EasyWebViewClient: Creating the GetAccessToken object, http://www.cs.uml.edu/#scope=activity&user_id=3CNXJX&token_type=Bearer&expires_in=86400&access_token=eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0NjQ4Mzg3ODAsInNjb3BlcyI6IndhY3QiLCJzdWIiOiIzQ05YSlgiLCJhdWQiOiIyMjdOQ1MiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJpYXQiOjE0NjQ3NTIzODB9.ypAjTPlkr8CgORouTAGpk_tOrBbzbA9qWDLmU87nz5U
+05-31 23:39:39.321 2387-2387/com.uwanttolearn.easysocialfacebooktesting V/BoostFramework: BoostFramework() : mPerf = com.qualcomm.qti.Performance@3bcf17c
+05-31 23:39:39.321 2387-2387/com.uwanttolearn.easysocialfacebooktesting V/BoostFramework: BoostFramework() : mPerf = com.qualcomm.qti.Performance@aeeca05
+05-31 23:39:39.353 2387-3875/com.uwanttolearn.easysocialfacebooktesting E/GetAccessToken: doInBackground https://api.fitbit.com/oauth2/token?grant_type=authorization_code&client_id=227NCS&redirect_uri=http://www.cs.uml.edu&client_secret=a6f5a2f9c4c8333609be680b7ee976be&code=eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0NjQ4Mzg3ODAsInNjb3BlcyI6IndhY3QiLCJzdWIiOiIzQ05YSlgiLCJhdWQiOiIyMjdOQ1MiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJpYXQiOjE0NjQ3NTIzODB9.ypAjTPlkr8CgORouTAGpk_tOrBbzbA9qWDLmU87nz5U
+05-31 23:39:39.373 2387-3875/com.uwanttolearn.easysocialfacebooktesting W/System: ClassLoader referenced unknown path: /system/framework/tcmclient.jar
+05-31 23:39:39.419 2387-2387/com.uwanttolearn.easysocialfacebooktesting W/cr_BindingManager: Cannot call determinedVisibility() - never saw a connection for the pid: 2387
+05-31 23:39:39.434 2387-2387/com.uwanttolearn.easysocialfacebooktesting E/Error: Response OK!
+05-31 23:39:39.435 2387-2387/com.uwanttolearn.easysocialfacebooktesting E/EEE: Coming hereeeeeeeeeeeeeeeeee!
+05-31 23:39:39.436 2387-2387/com.uwanttolearn.easysocialfacebooktesting E/EasySocialFitbitApp: https://api.fitbit.com/oauth2/token?grant_type=authorization_code&client_id=227NCS&redirect_uri=http://www.cs.uml.edu&client_secret=a6f5a2f9c4c8333609be680b7ee976be&code=eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0NjQ4Mzg3ODAsInNjb3BlcyI6IndhY3QiLCJzdWIiOiIzQ05YSlgiLCJhdWQiOiIyMjdOQ1MiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJpYXQiOjE0NjQ3NTIzODB9.ypAjTPlkr8CgORouTAGpk_tOrBbzbA9qWDLmU87nz5U
+05-31 23:39:39.436 2387-2387/com.uwanttolearn.easysocialfacebooktesting E/EasyWebView: the code/token is fitbit.com/oauth2/token?grant_type=authorization_code&client_id=227NCS&redirect_uri=http://www.cs.uml.edu&client_secret=a6f5a2f9c4c8333609be680b7ee976be&code=eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0NjQ4Mzg3ODAsInNjb3BlcyI6IndhY3QiLCJzdWIiOiIzQ05YSlgiLCJhdWQiOiIyMjdOQ1MiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJpYXQiOjE0NjQ3NTIzODB9.ypAjTPlkr8CgORouTAGpk_tOrBbzbA9qWDLmU87nz5U
+05-31 23:39:39.436 2387-2387/com.uwanttolearn.easysocialfacebooktesting E/EEE: fitbit.com/oauth2/token?grant_type=authorization_code&client_id=227NCS&redirect_uri=http://www.cs.uml.edu&client_secret=a6f5a2f9c4c8333609be680b7ee976be&code=eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE0NjQ4Mzg3ODAsInNjb3BlcyI6IndhY3QiLCJzdWIiOiIzQ05YSlgiLCJhdWQiOiIyMjdOQ1MiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJpYXQiOjE0NjQ3NTIzODB9.ypAjTPlkr8CgORouTAGpk_tOrBbzbA9qWDLmU87nz5U
+

@@ -54,14 +54,27 @@ public class EasySocialFitbit {
      * it is compulsory to override onActivityResult method.
      * @param activity It take activity as a reference.
      * @param requestCode requestCode is used to handle the response.
+     *
+     * NOTE: this will start the new activity of EasySocialAuthActivity(in easysocial package)
      */
     public void login(Activity activity, int requestCode){
+
+        /* construct the intent for starting authentication */
         Intent intent = new Intent(activity, EasySocialAuthActivity.class);
+
+        /* set the login url, */
         intent.putExtra(EasySocialAuthActivity.URL,_EasySocialFitbitUrlManager.getLoginUrl());
+
+        /* set the redirect url */
         intent.putExtra(EasySocialAuthActivity.REDIRECT_URL, _EasySocialFitbitUrlManager.getRedirectUrl());
+
+        /* set the access token url */
         intent.putExtra(EasySocialAuthActivity.ACCESS_TOKEN, _EasySocialFitbitUrlManager.getAccessTokenUrl()/**+EasySocialFitbitPreferenceUtility.getAccessToken(activity)*/);
+
+        /* set the response type */
         intent.putExtra(EasySocialAuthActivity.RESPONSE_TYPE, _EasySocialFitbitUrlManager.getResponseType());
-        Log.e("LLL:", "EasySocialFitbit::login" + _EasySocialFitbitUrlManager.getLoginUrl());
+
+        Log.e("EasySocialFitbit", "login: " + _EasySocialFitbitUrlManager.getLoginUrl());
         activity.startActivityForResult(intent, requestCode);
     }
 
@@ -71,9 +84,9 @@ public class EasySocialFitbit {
      * @param data Intent which get in onActivityResult method.
      */
     public void loginResponseHandler(Context context,Intent data){
-        Log.e("EEE","Coming hereeeeeeeeeeeeeeeeee!");
+        Log.e("EasySocialFitbit","loginResonseHandler!");
         String accessToken = EasySocialFitbitAccessTokenParse.parseAccessToken(data);
-        Log.e("EEE", accessToken);
+        Log.e("EasySocialFitbit", "access_token = " + accessToken);
         EasySocialFitbitPreferenceUtility.setAccessToken(context, accessToken);
     }
 
