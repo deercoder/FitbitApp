@@ -1,7 +1,6 @@
 package com.uwanttolearn.easysocial;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -13,6 +12,8 @@ import android.webkit.WebViewClient;
 
 /**
 * Created by Hafiz Waleed Hussain on 12/6/2014.
+ * Modified by Chang Liu on 6/2/2016, to fit for Fitbit Implicit Grant Flow(which don't need the
+ * authorization code and access_token in two steps, we directly get it)
 */
 class EasyWebViewClient extends WebViewClient {
 
@@ -41,28 +42,35 @@ class EasyWebViewClient extends WebViewClient {
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
 
+        Log.e("EasyWebViewClient", "shouldOverrideUrlLoading " + url);
         Uri uri = Uri.parse(url);
         String host = uri.getHost();
+        Log.e("EasyWebViewClient", "Host: " + host);
 
         Uri callbackUri = Uri.parse(_EasySocialAuthActivity.getRedirectUrl());
         String callbackHost = callbackUri.getHost();
 
+        Log.e("EasyWebViewClient", "callbackhost  " + callbackHost);
+
         if(host.equals(callbackHost)){
             Uri shortUri =  Uri.parse(url);
             String fragment = shortUri.getFragment();    // get only the string after `#`
+            Log.e("ViewClient", "fragment " + fragment);
             // remaining part is like:
             // scope=activity&user_id=3CNXJX&token_type=Bearer&expires_in=86400&access_token=
             // eyJhbGciOiJIUzI1Ni.BZghP9uiOW_dfH0jE3SnoquG
             int indexOfToken = fragment.indexOf("access_token");
             String code = fragment.substring(indexOfToken + 13, fragment.length());// add length of access_token=
             Log.e("EasyWebView", "the code/token is " + code);
-            GetAccessToken getAccessToken = new GetAccessToken(_EasySocialAuthActivity);
+
+            // no longer needs this to get access_token as we have use implicit grant way to get it
+            //GetAccessToken getAccessToken = new GetAccessToken(_EasySocialAuthActivity);
             //Chang, locate the issue of fitbit's wrong url
-            Log.e("EasyWebViewClient", "Creating the GetAccessToken object, " +url);
+            //Log.e("EasyWebViewClient", "Creating the GetAccessToken object, " +url);
 
             //Chang, the following url(getAccessToken()+code) is what we think should be access_token
             // request, but in the code is null
-            getAccessToken.execute(_EasySocialAuthActivity.getAccessToken()+code);
+            //getAccessToken.execute(_EasySocialAuthActivity.getAccessToken()+code);
         }
         return super.shouldOverrideUrlLoading(view, url);
     }

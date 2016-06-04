@@ -1,21 +1,14 @@
 package com.uwanttolearn.easysocial;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Intent;
-import android.net.Uri;
-//import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.widget.LinearLayout;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.logging.Logger;
 
 /**
  * Created by Hafiz Waleed Hussain on 12/4/2014.
+ * Modified by Chang Liu on 6/2/2016, to fit for Fitbit Application (Implicit Grant Flow)
  * This Activity is used to Authenticate user login. This activity always start as a startActivityForResult.
  * If Authentication failed due to any reason we can get the reason in onActivityResult method. The Error code which we get
  * is a part of a WebViewClient for  more information about error code you will refer to {@link android.webkit.WebViewClient} error constants.
@@ -37,7 +30,7 @@ public class EasySocialAuthActivity extends Activity implements GetAccessToken.C
 
 
     /** Constants which we use for Intent data sharing */
-    public static final String REDIRECT_URL = "redirect_url";
+    public static final String REDIRECT_URL = "redirect_uri";   // fix bug: change from "url" to "uri" due to some difference
     public static final String URL = "url";
     public static final String ACCESS_TOKEN = "access_token";
     public static final String ERROR_CODE = "error_code";
@@ -100,8 +93,8 @@ public class EasySocialAuthActivity extends Activity implements GetAccessToken.C
         easyWebViewClient.get_Dialog().dismiss();
         _WebView.stopLoading();
         /** fix webview destroying issue, Chang */
-    //    _WebView.removeAllViews();
-   //     _WebView.destroy();
+        _WebView.removeAllViews();
+        _WebView.destroy();
         try {
             Intent data = new Intent();
             data.putExtra("data", line);
