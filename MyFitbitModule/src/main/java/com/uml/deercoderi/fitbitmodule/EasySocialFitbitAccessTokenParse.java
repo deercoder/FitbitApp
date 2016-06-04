@@ -17,8 +17,12 @@ final class EasySocialFitbitAccessTokenParse {
         Log.e("EasySocialFitbitApp", "" + line);
 
 
-        int indexOfToken = line.indexOf("access_token");
-        String code = line.substring(indexOfToken + 13, line.length());// add length of access_token=
+       // int indexOfToken = line.indexOf("access_token");
+       // String code = line.substring(indexOfToken + 13, line.length());// add length of access_token=
+
+        // fix bug, the passed data in the intent is actually is the
+        String code = line;     //
+
         Log.e("EasyWebView", "the code/token is " + code);
 
 

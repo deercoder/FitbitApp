@@ -3,6 +3,7 @@ package com.uwanttolearn.easysocial;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
@@ -92,12 +93,12 @@ public class EasySocialAuthActivity extends Activity implements GetAccessToken.C
     public void onComplete(String line) {
         easyWebViewClient.get_Dialog().dismiss();
         _WebView.stopLoading();
-        /** fix webview destroying issue, Chang */
         _WebView.removeAllViews();
         _WebView.destroy();
         try {
             Intent data = new Intent();
             data.putExtra("data", line);
+            Log.e("AuthActivity", "the data put in the intent is " + line);
             setResult(RESULT_OK,data);
             finish();
         } catch (Exception e) {

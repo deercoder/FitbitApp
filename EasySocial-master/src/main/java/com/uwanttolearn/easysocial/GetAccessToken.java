@@ -4,11 +4,8 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.util.Log;
-
-import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
-import java.net.URLConnection;
+
 
 /**
  * Created by Hafiz Waleed Hussain on 12/6/2014.
@@ -50,22 +47,15 @@ public class GetAccessToken extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... params) {
         URL url = null;
-        try {
+
             //String tmp = "https://api.fitbit.com/oauth2/token?grant_type=authorization_code&client_id=227NCS&redirect_uri=http://www.cs.uml.edu&client_secret=a6f5a2f9c4c8333609be680b7ee976be";
-            url = new URL(params[0]); // for debug
+        //    url = new URL(params[0]); // for debug
             // url = new URL(tmp); // no use, debug is over
             Log.e("GetAccessToken", "doInBackground " + params[0]);
-            URLConnection urlConnection = url.openConnection();
+       //     URLConnection urlConnection = url.openConnection();
         //    BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
         //    return br.readLine();
-            return params[0];
-        } catch (MalformedURLException e) {
-            exceptionHandler(e);
-        } catch (IOException e) {
-            /// Chang, Now it's breaking when executing the BufferedReader br = XXX...
-            exceptionHandler(e);
-        }
-        return null;
+        return params[0];
     }
 
     @Override

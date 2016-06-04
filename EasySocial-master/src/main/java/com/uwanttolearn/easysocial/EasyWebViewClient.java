@@ -64,13 +64,20 @@ class EasyWebViewClient extends WebViewClient {
             Log.e("EasyWebView", "the code/token is " + code);
 
             // no longer needs this to get access_token as we have use implicit grant way to get it
-            //GetAccessToken getAccessToken = new GetAccessToken(_EasySocialAuthActivity);
+            GetAccessToken getAccessToken = new GetAccessToken(_EasySocialAuthActivity);
             //Chang, locate the issue of fitbit's wrong url
-            //Log.e("EasyWebViewClient", "Creating the GetAccessToken object, " +url);
+            Log.e("EasyWebViewClient", "Creating the GetAccessToken object, " +url);
 
             //Chang, the following url(getAccessToken()+code) is what we think should be access_token
             // request, but in the code is null
+
+            // Fix bug, only put the necessary access_token into this area, instead of the url which is
+            // for 4-step authorization_code
             //getAccessToken.execute(_EasySocialAuthActivity.getAccessToken()+code);
+
+            // this must be executed for dismissing the redirect_url's page, which is not necessary
+            // and should use another activity
+            getAccessToken.execute(code);
         }
         return super.shouldOverrideUrlLoading(view, url);
     }
