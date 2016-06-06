@@ -29,7 +29,7 @@ public abstract class WebRequest {
             Log.e("WebRequest", "WebRequest's inputStreamParse " + line);
             //return line;
             // for debugging, now let's check whether it crashes when returning the value
-            return "NULL!";
+            return line;
         } catch (IOException e) {
             e.printStackTrace();
             Log.e("WebRequest", "Now crashes!");

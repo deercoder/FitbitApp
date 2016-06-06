@@ -97,6 +97,8 @@ public class EasySocialFitbit {
      */
     public static interface UserInfoCallback{ void onComplete(JSONObject jsonObject);}
 
+
+
     /**
      * This method get the User Information from Fitbit and send back to the caller
      * using Callback UserInfoCallback as JSONObject or null if error occur.
@@ -105,6 +107,8 @@ public class EasySocialFitbit {
      */
     public void getUserInfo(Context context, final UserInfoCallback userInfoCallback){
 
+        String accessToken = EasySocialFitbitPreferenceUtility.getAccessToken(context);
+
         GetWebRequest getWebRequest = new GetWebRequest(new WebRequest.Callback() {
             @Override
             public void requestComplete(String line) {
@@ -112,6 +116,9 @@ public class EasySocialFitbit {
                     // Chang, to be fixed here, it's null!!
                     Log.e("EasySocialFitbit", "callback line " + line);
                     JSONObject jsonObject = new JSONObject(line); // Chang, if I use "aaa" value, it will pass, but wrong value
+                    if (jsonObject == null) {
+                        Log.e("EasySocialFitbit", "null json object");
+                    }
                     userInfoCallback.onComplete(jsonObject);
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -119,6 +126,6 @@ public class EasySocialFitbit {
                 }
             }
         });
-        getWebRequest.executeRequest(_EasySocialFitbitUrlManager.getUserInfoUrl(context));
+        getWebRequest.executeRequest(_EasySocialFitbitUrlManager.getUserInfoUrl(context), accessToken);
     }
 }

@@ -102,7 +102,6 @@ public class MainFragment extends Fragment {
         }
     };
 
-
     /***
      * click listener for GetInfo Button
      * @param requestCode
@@ -121,6 +120,7 @@ public class MainFragment extends Fragment {
                         public void onComplete(JSONObject jsonObject) {
                             Log.e("MainFragment", "onGetUserInfoClick's onComplete is clicked!");
                             if(jsonObject == null){
+                                Log.e("MainFragment", "Here!!!!!");
                                 mResponseTextView.setText("UserInfo null");
                             }else{
                                 mResponseTextView.setText(jsonObject.toString());
