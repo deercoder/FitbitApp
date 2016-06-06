@@ -121,10 +121,10 @@ public class MainFragment extends Fragment {
                             Log.e("MainFragment", "onGetUserInfoClick's onComplete is clicked!");
                             if(jsonObject == null){
                                 Log.e("MainFragment", "Here!!!!!");
-                                //mResponseTextView.setText("UserInfo null");
+                                mResponseTextView.setText("UserInfo null");
                             }else{
                                 mResponseTextView.setText(jsonObject.toString());
-                                mUserId = jsonObject.optString("id");
+                                mUserId = jsonObject.optString("encodedId");
                                 if(mUserId != null){
                                     enableButton(mGetFriendsButton);
                                     enableButton(mPostMessageButton);

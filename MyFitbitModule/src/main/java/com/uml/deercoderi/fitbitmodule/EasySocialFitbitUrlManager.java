@@ -8,7 +8,7 @@ import com.uwanttolearn.easysocial.EasySocialCredential;
 class EasySocialFitbitUrlManager {
 
     /** Constants */
-    private static final String FITBIT_REQUEST_URL =  "https://api.fitbitcom/1/user/-/";
+    private static final String FITBIT_REQUEST_URL =  "https://api.fitbit.com/1/user/-/profile.json";
 
     /** Constants for Fitbit URL, Chang */
     private static final String FITBIT_LOGIN_URL = "https://www.fitbit.com/oauth2/authorize?";
@@ -111,7 +111,7 @@ class EasySocialFitbitUrlManager {
      * @return
      */
     public String getUserInfoUrl(Context context){
-        return "https://api.fitbit.com/1/user/-/activities/frequent.json";
+        return FITBIT_REQUEST_URL;
     }
 
     /**
