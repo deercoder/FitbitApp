@@ -23,31 +23,59 @@
         android:id="@+id/MainFragment_get_user_info_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Get User Info"
+        android:text="User Info"
         android:enabled="false"
         />
 
     <Button
-        android:id="@+id/MainFragment_get_friends_button"
+        android:id="@+id/MainFragment_get_activities_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Get Friends"
+        android:text="Activities"
         android:enabled="false"
         />
 
     <Button
-        android:id="@+id/MainFragment_post_message_button"
+        android:id="@+id/MainFragment_body_weight_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Post Message"
+        android:text="Body_weight"
         android:enabled="false"
         />
 
         <Button
-            android:id="@+id/MainFragment_get_user_image_button"
+            android:id="@+id/MainFragment_get_heart_rate_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Get User Image"
+            android:text="HeartRate"
+            android:enabled="false"
+            />
+        <Button
+            android:id="@+id/MainFragment_get_food_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Food"
+            android:enabled="false"
+            />
+        <Button
+            android:id="@+id/MainFragment_get_sleep_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sleep"
+            android:enabled="false"
+            />
+        <Button
+            android:id="@+id/MainFragment_get_friends_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Friends"
+            android:enabled="false"
+            />
+        <Button
+            android:id="@+id/MainFragment_get_devices_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Devices"
             android:enabled="false"
             />
 

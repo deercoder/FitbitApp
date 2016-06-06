@@ -26,8 +26,12 @@ public class MainFragment extends Fragment {
     private Button mLoginButton;
     private Button mGetUserInfoButton;
     private Button mGetFriendsButton;
-    private Button mPostMessageButton;
-    private Button mGetUserImageButton;
+    private Button mGetBodyWeightButton;
+    private Button mGetActivitiesButton;
+    private Button mGetSleepButton;
+    private Button mGetDevicesButton;
+    private Button mGetHeartRateButton;
+    private Button mGetFoodButton;
     private TextView mResponseTextView;
     private ProgressDialog progressDialog;
 
@@ -48,8 +52,14 @@ public class MainFragment extends Fragment {
         mLoginButton = (Button) rootView.findViewById(R.id.MainFragment_login_button);
         mGetUserInfoButton = (Button) rootView.findViewById(R.id.MainFragment_get_user_info_button);
         mGetFriendsButton = (Button) rootView.findViewById(R.id.MainFragment_get_friends_button);
-        mPostMessageButton = (Button) rootView.findViewById(R.id.MainFragment_post_message_button);
-        mGetUserImageButton = (Button) rootView.findViewById(R.id.MainFragment_get_user_image_button);
+        mGetBodyWeightButton = (Button) rootView.findViewById(R.id.MainFragment_body_weight_button);
+        mGetActivitiesButton = (Button) rootView.findViewById(R.id.MainFragment_get_activities_button);
+        mGetSleepButton = (Button) rootView.findViewById(R.id.MainFragment_get_sleep_button);
+        mGetDevicesButton = (Button) rootView.findViewById(R.id.MainFragment_get_devices_button);
+        mGetHeartRateButton = (Button) rootView.findViewById(R.id.MainFragment_get_heart_rate_button);
+        mGetFoodButton = (Button) rootView.findViewById(R.id.MainFragment_get_food_button);
+
+
         mResponseTextView = (TextView) rootView.findViewById(R.id.MainFragment_response_text_view);
         progressDialog = new ProgressDialog(getActivity());
 
@@ -78,11 +88,15 @@ public class MainFragment extends Fragment {
         /** GUI handling logic*/
         if(mEasySocialFitbit.isLogin(getActivity())){
             disableButton(mLoginButton);
+            enableButton(mGetDevicesButton);
             enableButton(mGetUserInfoButton);
-            enableButton(mGetUserImageButton);
             if(mUserId != null){
                 enableButton(mGetFriendsButton);
-                enableButton(mPostMessageButton);
+                enableButton(mGetActivitiesButton);
+                enableButton(mGetFoodButton);
+                enableButton(mGetSleepButton);
+                enableButton(mGetBodyWeightButton);
+                enableButton(mGetHeartRateButton);
             }
         }
 
@@ -127,7 +141,11 @@ public class MainFragment extends Fragment {
                                 mUserId = jsonObject.optString("encodedId");
                                 if(mUserId != null){
                                     enableButton(mGetFriendsButton);
-                                    enableButton(mPostMessageButton);
+                                    enableButton(mGetActivitiesButton);
+                                    enableButton(mGetFoodButton);
+                                    enableButton(mGetSleepButton);
+                                    enableButton(mGetBodyWeightButton);
+                                    enableButton(mGetHeartRateButton);
                                 }
                             }
                             progressDialog.dismiss();
