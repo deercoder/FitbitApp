@@ -114,14 +114,15 @@ public class EasySocialFitbit {
             public void requestComplete(String line) {
                 try {
                     // Chang, to be fixed here, it's null!!
-                    Log.e("EasySocialFitbit", "callback line " + line);
-                    JSONObject jsonObject = new JSONObject(line); // Chang, if I use "aaa" value, it will pass, but wrong value
+                    Log.e("EasySocialFitbit", "callback line " + line.substring(1, line.length()-1));
+                    JSONObject jsonObject = new JSONObject(line.substring(1, line.length()-1)); // Chang, if I use "aaa" value, it will pass, but wrong value
                     if (jsonObject == null) {
                         Log.e("EasySocialFitbit", "null json object");
                     }
                     userInfoCallback.onComplete(jsonObject);
                 } catch (JSONException e) {
                     e.printStackTrace();
+                    Log.e("EasySocialFitbit", "Exception when consturction JSON Object");
                     userInfoCallback.onComplete(null);
                 }
             }

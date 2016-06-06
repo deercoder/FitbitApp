@@ -32,7 +32,7 @@ public class MainFragment extends Fragment {
     private ProgressDialog progressDialog;
 
     /** Objects */
-    private EasySocialFitbit mEasySocialFacebook;
+    private EasySocialFitbit mEasySocialFitbit;
     private String mUserId = null;
 
     /** Constants */
@@ -73,10 +73,10 @@ public class MainFragment extends Fragment {
                         new String[]{"activity", "nutrition", "heartrate", "location","sleep", "profile", "settings", "social", "weight"})
                 .build();
 
-        mEasySocialFacebook = EasySocialFitbit.getInstance(mCredentials);
+        mEasySocialFitbit = EasySocialFitbit.getInstance(mCredentials);
 
         /** GUI handling logic*/
-        if(mEasySocialFacebook.isLogin(getActivity())){
+        if(mEasySocialFitbit.isLogin(getActivity())){
             disableButton(mLoginButton);
             enableButton(mGetUserInfoButton);
             enableButton(mGetUserImageButton);
@@ -97,7 +97,7 @@ public class MainFragment extends Fragment {
         @Override
         public void onClick(View v) {
 
-            mEasySocialFacebook.login(getActivity(), REQUEST_CODE);
+            mEasySocialFitbit.login(getActivity(), REQUEST_CODE);
 
         }
     };
@@ -114,14 +114,14 @@ public class MainFragment extends Fragment {
 
             Log.e("MainFragment", "GetUserInfo is clicked!");
 
-            mEasySocialFacebook.getUserInfo(getActivity(),
+            mEasySocialFitbit.getUserInfo(getActivity(),
                     new EasySocialFitbit.UserInfoCallback() {
                         @Override
                         public void onComplete(JSONObject jsonObject) {
                             Log.e("MainFragment", "onGetUserInfoClick's onComplete is clicked!");
                             if(jsonObject == null){
                                 Log.e("MainFragment", "Here!!!!!");
-                                mResponseTextView.setText("UserInfo null");
+                                //mResponseTextView.setText("UserInfo null");
                             }else{
                                 mResponseTextView.setText(jsonObject.toString());
                                 mUserId = jsonObject.optString("id");
@@ -150,7 +150,7 @@ public class MainFragment extends Fragment {
                 Log.e("MainFragment", "Response OK!");
                 mResponseTextView.setText("Login Successful");
                 /** Handle the authentication response */
-                mEasySocialFacebook.loginResponseHandler(getActivity(), data);
+                mEasySocialFitbit.loginResponseHandler(getActivity(), data);
                 enableButton(mGetUserInfoButton);
             }
         }else if(resultCode == Activity.RESULT_CANCELED){
