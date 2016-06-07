@@ -63,11 +63,20 @@ public class MainFragment extends Fragment {
         mResponseTextView = (TextView) rootView.findViewById(R.id.MainFragment_response_text_view);
         progressDialog = new ProgressDialog(getActivity());
 
-        /** Setup views */
+        /** Setup listener for LOGIN button */
         mLoginButton.setOnClickListener(onLoginButtonClick);
 
-        /* set up listener */
+        /* set up listener for Get USER INFO button */
         mGetUserInfoButton.setOnClickListener(onGetUserInfoClick);
+
+        /** set up listener for fetching information */
+        mGetActivitiesButton.setOnClickListener(onGetActivitiesClick);
+        mGetBodyWeightButton.setOnClickListener(onGetBodyWeightClick);
+        mGetFoodButton.setOnClickListener(onGetFoodClick);
+        mGetHeartRateButton.setOnClickListener(onGetHeartRateClick);
+        mGetFriendsButton.setOnClickListener(onGetFriendsClick);
+        mGetSleepButton.setOnClickListener(onGetSleepClick);
+        mGetDevicesButton.setOnClickListener(onGetDevicesClick);
 
         /** set the dialog status */
         progressDialog.setCancelable(false);
@@ -156,8 +165,166 @@ public class MainFragment extends Fragment {
         }
     };
 
+    private View.OnClickListener onGetActivitiesClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Log.e("MainFragment", "Get activities is clicked!");
 
+            mEasySocialFitbit.getActivitiesInfo(getActivity(),
+                    new EasySocialFitbit.GeneralCallback() {
+                        @Override
+                        public void onComplete(JSONObject jsonObject) {
+                            Log.e("MainFragment", "getActivityInfoCallback's onComplete is clicked!");
+                            if(jsonObject == null){
+                                Log.e("MainFragment", "Here!!!!!");
+                                mResponseTextView.setText("Activity info is null");
+                            }else{
+                                mResponseTextView.setText(jsonObject.toString());
+                            }
+                            progressDialog.dismiss();
+                        }
+                    });
+            progressDialog.show();
+        }
+    };
 
+    private View.OnClickListener onGetBodyWeightClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Log.e("MainFragment", "Get Body and Weight is clicked!");
+
+            mEasySocialFitbit.getBodyWeightInfo(getActivity(),
+                    new EasySocialFitbit.GeneralCallback() {
+                        @Override
+                        public void onComplete(JSONObject jsonObject) {
+                            Log.e("MainFragment", "getBodyWeightInfoCallback's onComplete is clicked!");
+                            if(jsonObject == null){
+                                Log.e("MainFragment", "Here!!!!!");
+                                mResponseTextView.setText("Body and Weight info is null");
+                            }else{
+                                mResponseTextView.setText(jsonObject.toString());
+                            }
+                            progressDialog.dismiss();
+                        }
+                    });
+            progressDialog.show();
+        }
+    };
+
+    private View.OnClickListener onGetFoodClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Log.e("MainFragment", "Get Food is clicked!");
+
+            mEasySocialFitbit.getFoodInfo(getActivity(),
+                    new EasySocialFitbit.GeneralCallback() {
+                        @Override
+                        public void onComplete(JSONObject jsonObject) {
+                            Log.e("MainFragment", "getFoodInfoCallback's onComplete is clicked!");
+                            if(jsonObject == null){
+                                Log.e("MainFragment", "Here!!!!!");
+                                mResponseTextView.setText("Food info is null");
+                            }else{
+                                mResponseTextView.setText(jsonObject.toString());
+                            }
+                            progressDialog.dismiss();
+                        }
+                    });
+            progressDialog.show();
+        }
+    };
+
+    private View.OnClickListener onGetHeartRateClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Log.e("MainFragment", "Get heart rate is clicked!");
+
+            mEasySocialFitbit.getHeartRateInfo(getActivity(),
+                    new EasySocialFitbit.GeneralCallback() {
+                        @Override
+                        public void onComplete(JSONObject jsonObject) {
+                            Log.e("MainFragment", "getHeartRateInfoCallback's onComplete is clicked!");
+                            if(jsonObject == null){
+                                Log.e("MainFragment", "Here!!!!!");
+                                mResponseTextView.setText("Heart Rate info is null");
+                            }else{
+                                mResponseTextView.setText(jsonObject.toString());
+                            }
+                            progressDialog.dismiss();
+                        }
+                    });
+            progressDialog.show();
+        }
+    };
+
+    private View.OnClickListener onGetSleepClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Log.e("MainFragment", "Get Sleep is clicked!");
+
+            mEasySocialFitbit.getFriendsInfo(getActivity(),
+                    new EasySocialFitbit.GeneralCallback() {
+                        @Override
+                        public void onComplete(JSONObject jsonObject) {
+                            Log.e("MainFragment", "getSleepInfoCallback's onComplete is clicked!");
+                            if(jsonObject == null){
+                                Log.e("MainFragment", "Here!!!!!");
+                                mResponseTextView.setText("Sleep info is null");
+                            }else{
+                                mResponseTextView.setText(jsonObject.toString());
+                            }
+                            progressDialog.dismiss();
+                        }
+                    });
+            progressDialog.show();
+        }
+    };
+
+    private View.OnClickListener onGetFriendsClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Log.e("MainFragment", "Get Friends is clicked!");
+
+            mEasySocialFitbit.getFriendsInfo(getActivity(),
+                    new EasySocialFitbit.GeneralCallback() {
+                        @Override
+                        public void onComplete(JSONObject jsonObject) {
+                            Log.e("MainFragment", "getFriendsInfoCallback's onComplete is clicked!");
+                            if(jsonObject == null){
+                                Log.e("MainFragment", "Here!!!!!");
+                                mResponseTextView.setText("Friends info is null");
+                            }else{
+                                mResponseTextView.setText(jsonObject.toString());
+                            }
+                            progressDialog.dismiss();
+                        }
+                    });
+            progressDialog.show();
+        }
+    };
+
+    private View.OnClickListener onGetDevicesClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Log.e("MainFragment", "Get Devices is clicked!");
+
+            mEasySocialFitbit.getDevicesInfo(getActivity(),
+                    new EasySocialFitbit.GeneralCallback() {
+                        @Override
+                        public void onComplete(JSONObject jsonObject) {
+                            Log.e("MainFragment", "getDevicesInfoCallback's onComplete is clicked!");
+                            if(jsonObject == null){
+                                Log.e("MainFragment", "Here!!!!!");
+                                mResponseTextView.setText("Devices info is null");
+                            }else{
+                                mResponseTextView.setText(jsonObject.toString());
+                            }
+                            progressDialog.dismiss();
+                        }
+                    });
+            progressDialog.show();
+        }
+    };
 
 
     @Override

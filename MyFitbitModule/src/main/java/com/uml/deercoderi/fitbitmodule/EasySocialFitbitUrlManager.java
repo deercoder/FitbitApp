@@ -5,10 +5,13 @@ import android.util.Log;
 
 import com.uwanttolearn.easysocial.EasySocialCredential;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 class EasySocialFitbitUrlManager {
 
     /** Constants */
-    private static final String FITBIT_REQUEST_URL =  "https://api.fitbit.com/1/user/-/profile.json";
+    private static final String FITBIT_USER_INFO_URL =  "https://api.fitbit.com/1/user/-/profile.json";
 
     /** Constants for Fitbit URL, Chang */
     private static final String FITBIT_LOGIN_URL = "https://www.fitbit.com/oauth2/authorize?";
@@ -111,7 +114,7 @@ class EasySocialFitbitUrlManager {
      * @return
      */
     public String getUserInfoUrl(Context context){
-        return FITBIT_REQUEST_URL;
+        return FITBIT_USER_INFO_URL;
     }
 
     /**
@@ -148,7 +151,6 @@ class EasySocialFitbitUrlManager {
     private String getAccessTokenAsUrlParameter(Context context){
         return "access_token="+ EasySocialFitbitPreferenceUtility.getAccessToken(context);
     }
-
 
 }
 

@@ -98,6 +98,35 @@ public class EasySocialFitbit {
     public static interface UserInfoCallback{ void onComplete(JSONObject jsonObject);}
 
 
+    /***
+     * The blew is for the call back of other fetching information, similar to UserInfoCallback
+     */
+    public static interface GeneralCallback {
+        void onComplete(JSONObject jsonObject);
+    }
+
+    /*
+    public static interface ActivitiesCallback {
+        void onComplete(JSONObject jsonObject);
+    }
+
+    public static interface BodyWeightCallback {
+        void onComplete(JSONObject jsonObject);
+    }
+
+    public static interface HeartRateCallback {
+        void onComplete(JSONObject jsonObject);
+    }
+
+    public static interface FoodCallback {
+        void onComplete(JSONObject jsonObject);
+    }
+
+    public void interface SleepCallback {
+        void onComplete(JSONObject jsonObject);
+    }
+    */
+
 
     /**
      * This method get the User Information from Fitbit and send back to the caller
@@ -129,4 +158,87 @@ public class EasySocialFitbit {
         });
         getWebRequest.executeRequest(_EasySocialFitbitUrlManager.getUserInfoUrl(context), accessToken);
     }
+
+    /*
+    ***
+    *           The blew code is for Fetching Fitbit's other information
+    *           (Activity, body&weight, sleep, heart rate etc...)
+    ***
+    */
+    public void getActivitiesInfo(Context context, final GeneralCallback fetchInfoCallback){
+        String accessToken = EasySocialFitbitPreferenceUtility.getAccessToken(context);
+        GetWebRequest getWebRequest = createGetWebRequest(fetchInfoCallback);
+        getWebRequest.executeRequest(new FitbitActivitiesUrlManager().getActivitiesInfoUrl(), accessToken);
+    }
+
+    public void getBodyWeightInfo(Context context, final GeneralCallback fetchInfoCallback){
+        String accessToken = EasySocialFitbitPreferenceUtility.getAccessToken(context);
+        GetWebRequest getWebRequest = createGetWebRequest(fetchInfoCallback);
+        getWebRequest.executeRequest(new FitbitBodyWeightUrlManager().getBodyWeightInfoUrl(), accessToken);
+    }
+
+    public void getFoodInfo(Context context, final GeneralCallback fetchInfoCallback){
+        String accessToken = EasySocialFitbitPreferenceUtility.getAccessToken(context);
+        GetWebRequest getWebRequest = createGetWebRequest(fetchInfoCallback);
+        getWebRequest.executeRequest(new FitbitFoodUrlManager().getFoodInfoUrl(), accessToken);
+    }
+
+    public void getHeartRateInfo(Context context, final GeneralCallback fetchInfoCallback){
+        String accessToken = EasySocialFitbitPreferenceUtility.getAccessToken(context);
+        GetWebRequest getWebRequest = createGetWebRequest(fetchInfoCallback);
+        getWebRequest.executeRequest(new FitbitHeartRateUrlManager().getHeartRateInfoUrl(), accessToken);
+    }
+
+    public void getSleepInfo(Context context, final GeneralCallback fetchInfoCallback){
+        String accessToken = EasySocialFitbitPreferenceUtility.getAccessToken(context);
+        GetWebRequest getWebRequest = createGetWebRequest(fetchInfoCallback);
+        getWebRequest.executeRequest(new FitbitSleepUrlManager().getSleepInfoUrl(), accessToken);
+    }
+
+    public void getFriendsInfo(Context context, final GeneralCallback fetchInfoCallback){
+        String accessToken = EasySocialFitbitPreferenceUtility.getAccessToken(context);
+        GetWebRequest getWebRequest = createGetWebRequest(fetchInfoCallback);
+        getWebRequest.executeRequest(new FitbitFriendsUrlManager().getFriendsInfoUrl(), accessToken);
+    }
+
+    public void getDevicesInfo(Context context, final GeneralCallback fetchInfoCallback){
+        String accessToken = EasySocialFitbitPreferenceUtility.getAccessToken(context);
+        GetWebRequest getWebRequest = createGetWebRequest(fetchInfoCallback);
+        getWebRequest.executeRequest(new FitbitDevicesUrlManager().getDevicesInfoUrl(), accessToken);
+    }
+
+
+    /*
+    *  General constructor for creating the getWebRequest
+    */
+    public GetWebRequest createGetWebRequest(final GeneralCallback callback) {
+
+        GetWebRequest getWebRequest = new GetWebRequest(new WebRequest.Callback() {
+            @Override
+            public void requestComplete(String line) {
+                try {
+                    // Chang, to be fixed here, it's null!!
+                    Log.e("EasySocialFitbit", "callback line " + line);
+
+                    // for response that contain [{}, {}...], have to reduce the "[", "]"
+                    // to avoid crashes, or have to parse it seperately and concatenate for whole
+                    if (line.charAt(0) == '[') {
+                        line = line.substring(1, line.length()-1);
+                    }
+                    JSONObject jsonObject = new JSONObject(line); // Chang, if I use "aaa" value, it will pass, but wrong value
+                    if (jsonObject == null) {
+                        Log.e("EasySocialFitbit", "createGetWebRequest's jsonObject is null!");
+                    }
+                    callback.onComplete(jsonObject);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    callback.onComplete(null);
+                }
+            }
+        });
+
+        return getWebRequest;
+    }
+
+
 }
