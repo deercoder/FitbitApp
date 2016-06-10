@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.uml.deercoderi.fitbitmodule.EasySocialFitbit;
+import com.uml.deercoderi.fitbitmodule.FitbitActivityParser;
 import com.uwanttolearn.easysocial.EasySocialAuthActivity;
 import com.uwanttolearn.easysocial.EasySocialCredential;
 
@@ -262,7 +263,7 @@ public class MainFragment extends Fragment {
         public void onClick(View v) {
             Log.e("MainFragment", "Get Sleep is clicked!");
 
-            mEasySocialFitbit.getFriendsInfo(getActivity(),
+            mEasySocialFitbit.getSleepInfo(getActivity(),
                     new EasySocialFitbit.GeneralCallback() {
                         @Override
                         public void onComplete(JSONObject jsonObject) {
@@ -317,6 +318,12 @@ public class MainFragment extends Fragment {
                                 Log.e("MainFragment", "Here!!!!!");
                                 mResponseTextView.setText("Devices info is null");
                             }else{
+
+                                String response = jsonObject.toString();
+                                FitbitActivityParser parser = new FitbitActivityParser(response, FitbitActivityParser.PARSER_DAILY_SUMMARY);
+                                parser.parseDailySummary();
+
+
                                 mResponseTextView.setText(jsonObject.toString());
                             }
                             progressDialog.dismiss();

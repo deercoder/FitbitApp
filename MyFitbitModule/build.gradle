@@ -23,4 +23,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:21.0.2'
     compile project(':EasySocial-master')
     compile 'junit:junit:4.12'
+    compile 'org.json:json:20160212'
 }

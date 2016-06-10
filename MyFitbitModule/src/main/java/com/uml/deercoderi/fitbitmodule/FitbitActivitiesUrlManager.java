@@ -39,6 +39,7 @@ public class FitbitActivitiesUrlManager {
 
     /// this is just for the activity summary
     private static final String FITBIT_ACTIVITIES_URL = "https://api.fitbit.com/1/user/-/activities/date/";
+    private static final String FITBIT_ACTIVITIES_TYPES = "https://api.fitbit.com/1/activities.json";
     private static String mDate = "";
     private static String mPeriod = "1d";
     private static String mSartDate = "";
@@ -57,6 +58,14 @@ public class FitbitActivitiesUrlManager {
     public String  getActivitiesInfoUrl() {
         return FITBIT_ACTIVITIES_URL + mDate + ".json";
     }
+
+    // browse all the activity types of Fitbit
+    public String getBrowseActivityTypesUrl() {
+        return FITBIT_ACTIVITIES_TYPES;
+    }
+
+
+
 
     // check for date format correctness in the future...
     public void setSartDate(String sDate) {

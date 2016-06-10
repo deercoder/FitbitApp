@@ -169,6 +169,10 @@ public class EasySocialFitbit {
         String accessToken = EasySocialFitbitPreferenceUtility.getAccessToken(context);
         GetWebRequest getWebRequest = createGetWebRequest(fetchInfoCallback);
         getWebRequest.executeRequest(new FitbitActivitiesUrlManager().getActivitiesInfoUrl(), accessToken);
+
+        // this is used for accessing the activity types that Fitbit supports
+        //getWebRequest.executeRequest(new FitbitActivitiesUrlManager().getBrowseActivityTypesUrl(), accessToken);
+
     }
 
     public void getBodyWeightInfo(Context context, final GeneralCallback fetchInfoCallback){

@@ -1,0 +1,100 @@
+package com.uml.deercoderi.fitbitmodule;
+
+/***
+ *  Created by Chang Liu, for parsing of the activity response(JSON-style)
+ *
+ *  There are multiple GET request, so the response of activity also has multiple types, including
+ *  non-TimeSeries and TimeSeries. We have to implemented all the interface and keyword for these
+ *  response and save them.
+ *
+ *  According to the official tutorial about Activity and its Time Series:
+ *  (https://dev.fitbit.com/docs/activity/):
+ *
+ *  Activity Summary:  https://api.fitbit.com/1/user/[user-id]/activities/date/[date].json
+ *
+ *  Time Series:
+ *  1. GET /1/user/[user-id]/[resource-path]/date/[date]/[period].json
+ 2. GET /1/user/[user-id]/[resource-path]/date/[base-date]/[end-date].json
+ *
+ *  For example: GET https://api.fitbit.com/1/user/-/activities/steps/date/today/1m.json
+
+ *
+ *  We need to set the correct date, in the format of YYYY-MM-DD
+ *  and the correct period, which could be 1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y, or max.
+ *
+ *
+ *  History:
+ *
+ *  Chang Liu, v1.0, June 9th, 2016, Create first initial version and README
+ *
+ */
+
+import android.util.Log;
+
+import com.uml.deercoderi.fitbitmodule.ActivityParser.Activities;
+import com.uml.deercoderi.fitbitmodule.ActivityParser.ActivityTimeSeries;
+import com.uml.deercoderi.fitbitmodule.ActivityParser.DailyActivitySummary;
+import com.uml.deercoderi.fitbitmodule.ActivityParser.Goal;
+import com.uml.deercoderi.fitbitmodule.ActivityParser.Summary;
+
+/**
+ * Created by cliu on 6/9/16.
+ */
+public class FitbitActivityParser {
+
+    /// define the types of parser, so that we can select which sub-parser to choose
+    public static final int PARSER_DAILY_SUMMARY = 0;
+    public static final int PARSER_ACTIVITY_TIME_SERIES = 1;
+    public static final int PARSER_ACTIVITY_LOGGING = 2;
+    public static final int PARSER_ACTIVITY_TYPES = 3;
+    public static final int PARSER_ACTIVITY_GOALS = 4;
+    public static final int PARSER_LIFETIME_STATS = 5;
+
+    // parser for daily activity summary
+    private DailyActivitySummary mDailySummary;
+
+    // parser for time series activity
+    private ActivityTimeSeries mActivityTimeSeries;
+
+    public FitbitActivityParser() {
+        /// empty constuctor, for future extension
+    }
+
+
+    public FitbitActivityParser(String jsonString, int type) {
+        switch(type) {
+            case PARSER_DAILY_SUMMARY:
+                mDailySummary = new DailyActivitySummary(jsonString);
+            case PARSER_ACTIVITY_TIME_SERIES:
+                mActivityTimeSeries = new ActivityTimeSeries(jsonString);
+            case PARSER_ACTIVITY_LOGGING:
+            case PARSER_ACTIVITY_TYPES:
+            case PARSER_ACTIVITY_GOALS:
+            case PARSER_LIFETIME_STATS:
+            default:
+                Log.e("FitbitActivityParser", "other cases in FitbitActivityParser!");
+        }
+
+    }
+
+
+    public void parseDailySummary() {
+        if (mDailySummary != null) {
+            mDailySummary.parse();
+        }
+        else {
+            Log.e("FitbitActivityParser", "NULL daily summary parser, error for parsing!");
+        }
+    }
+
+    public void parseActivityTimeSeries() {
+        if (mActivityTimeSeries != null) {
+            mActivityTimeSeries.parse();
+        }
+        else {
+            Log.e("FitbitActivityParser", "NULL acitivity time series parser, error for parsing!");
+        }
+    }
+
+
+}
