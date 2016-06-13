@@ -23,12 +23,15 @@ package com.uml.deercoderi.fitbitmodule.ActivityParser;
  */
 
 
+import org.json.JSONObject;
+
 /**
  * Created by cliu on 6/9/16.
  */
 public class ActivityTimeSeries {
 
-    private String rawJsonString = "";
+    // raw json object as the response
+    private JSONObject rawJSONObject;
 
 
     public ActivityTimeSeries() {
@@ -36,8 +39,8 @@ public class ActivityTimeSeries {
     }
 
 
-    public ActivityTimeSeries(String jsonString) {
-        rawJsonString = jsonString;
+    public ActivityTimeSeries(JSONObject json) {
+        rawJSONObject = json;
     }
 
 

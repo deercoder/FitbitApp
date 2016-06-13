@@ -17,6 +17,7 @@ import com.uml.deercoderi.fitbitmodule.FitbitActivityParser;
 import com.uwanttolearn.easysocial.EasySocialAuthActivity;
 import com.uwanttolearn.easysocial.EasySocialCredential;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 
@@ -180,7 +181,23 @@ public class MainFragment extends Fragment {
                                 Log.e("MainFragment", "Here!!!!!");
                                 mResponseTextView.setText("Activity info is null");
                             }else{
-                                mResponseTextView.setText(jsonObject.toString());
+
+                                FitbitActivityParser parser = new FitbitActivityParser(jsonObject, FitbitActivityParser.PARSER_DAILY_SUMMARY);
+                                String textString = "";
+                                try {
+                                    textString += parser.parseDailySummary();
+                                }
+                                catch(JSONException e) {
+                                    Log.e("MainFragment", "parseDailySummary error!");
+                                    e.printStackTrace();
+                                }
+                                if (textString != null) {
+
+                                    mResponseTextView.setText(textString);
+                                }
+                                else {
+                                    mResponseTextView.setText("NULL info");
+                                }
                             }
                             progressDialog.dismiss();
                         }
@@ -318,12 +335,6 @@ public class MainFragment extends Fragment {
                                 Log.e("MainFragment", "Here!!!!!");
                                 mResponseTextView.setText("Devices info is null");
                             }else{
-
-                                String response = jsonObject.toString();
-                                FitbitActivityParser parser = new FitbitActivityParser(response, FitbitActivityParser.PARSER_DAILY_SUMMARY);
-                                parser.parseDailySummary();
-
-
                                 mResponseTextView.setText(jsonObject.toString());
                             }
                             progressDialog.dismiss();

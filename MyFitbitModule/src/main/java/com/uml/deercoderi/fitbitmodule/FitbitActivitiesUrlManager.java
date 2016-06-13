@@ -5,7 +5,7 @@ package com.uml.deercoderi.fitbitmodule;
  *  According to the official tutorial about Activity and its Time Series:
  *  (https://dev.fitbit.com/docs/activity/):
  *
- *  Activity Summary:  https://api.fitbit.com/1/user/[user-id]/activities/date/[date].json
+ *  Activity FitbitSummary:  https://api.fitbit.com/1/user/[user-id]/activities/date/[date].json
  *
  *  Time Series:
  *  1. GET /1/user/[user-id]/[resource-path]/date/[date]/[period].json
@@ -40,14 +40,14 @@ public class FitbitActivitiesUrlManager {
     /// this is just for the activity summary
     private static final String FITBIT_ACTIVITIES_URL = "https://api.fitbit.com/1/user/-/activities/date/";
     private static final String FITBIT_ACTIVITIES_TYPES = "https://api.fitbit.com/1/activities.json";
-    private static String mDate = "";
+    private static String mDate = "2015-05-14";
     private static String mPeriod = "1d";
     private static String mSartDate = "";
     private static String mEndDate = "";
 
 
     public FitbitActivitiesUrlManager() {
-        initDate();
+        //initDate();
     }
 
 

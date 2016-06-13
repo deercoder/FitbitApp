@@ -10,7 +10,7 @@ package com.uml.deercoderi.fitbitmodule.ActivityParser;
  *  According to the official tutorial about Activity and its Time Series:
  *  (https://dev.fitbit.com/docs/activity/):
  *
- *  Activity Summary:  https://api.fitbit.com/1/user/[user-id]/activities/date/[date].json
+ *  Activity FitbitSummary:  https://api.fitbit.com/1/user/[user-id]/activities/date/[date].json
 
  *  We need to set the correct date, in the format of YYYY-MM-DD
  *  and the correct period, which could be 1d, 7d, 30d, 1w, 1m, 3m, 6m, 1y, or max.
@@ -22,8 +22,14 @@ package com.uml.deercoderi.fitbitmodule.ActivityParser;
  *
  */
 
+import android.util.Log;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 /***
- * This is part of the ##Get Daily Activity Summary##, the response contains:
+ * This is part of the ##Get Daily Activity FitbitSummary##, the response contains:
  * 1) activities List
  * 2) goals
  * 3) summary
@@ -32,40 +38,98 @@ package com.uml.deercoderi.fitbitmodule.ActivityParser;
  * sub-class to store all these objects and its member variables.
  *
  *
- * see details of Get Daily Activity Summary Section:
+ * see details of Get Daily Activity FitbitSummary Section:
  *          https://dev.fitbit.com/docs/activity/#get-daily-activity-summary
  */
 public class DailyActivitySummary {
 
     // object for using to parse sub-object
-    private Activities mActivity;        // activity
-    private Goal mGoals;           // goals
-    private Summary mSummary;       // summary
+    private FitbitActivity mActivity;        // activity
+    private FitbitGoal mGoals;           // goals
+    private FitbitSummary mSummary;       // summary
 
     // raw response string in JSON-style
-    private String rawResponse;
+    private JSONObject rawResponse;
 
-    public DailyActivitySummary(String jsonString) {
-        rawResponse = jsonString;
+    /// pre-prasing stage, which will parse the raw JSON into several sub-object
+    /// for example, activities, goals, summary
+    private JSONArray activitiesJSONArray;
+    private JSONObject goalJSONObject;
+    private JSONObject summaryJSONObject;
+
+
+    /// used the raw response string to construct parser
+    public DailyActivitySummary(JSONObject json) {
+        rawResponse = json;
+
+        // do the pre-parsing when constructing the objects
+        preParse();
+    }
+
+    /// using the raw json object, we get the activity/goal/summary sub-object for future parsing
+    public void preParse() {
+        try {
+            activitiesJSONArray = rawResponse.getJSONArray("activities");
+            goalJSONObject = rawResponse.getJSONObject("goals");
+            summaryJSONObject = rawResponse.getJSONObject("summary");
+        } catch (JSONException e) {
+            Log.e("DailyActivitySummary", "Exception when preparse the raw JSON Object!");
+        }
     }
 
 
+
+
+    /// for future extension, parse()
     public void parse() {
-        String activity = parseActivities();
-        String goal = parseGoals();
-        String summary = parseSummary();
+        //String activity = parseActivities();
+        //String goal = parseGoals();
+        //String summary = parseSummary();
     }
 
-    public String parseActivities() {
-        return "";
+    /*
+     *  Return all the activities in the daily activity summary
+     */
+    public String[] parseActivities() throws JSONException {
+
+        /// parse the activities arrays if not null
+        if (activitiesJSONArray != null) {
+            final int len = activitiesJSONArray.length();
+            String[] response = new String[len];
+            for (int i = 0; i < len; i++) {
+                /// get each of the activity
+                final JSONObject oneActivity = activitiesJSONArray.getJSONObject(i);
+                FitbitActivity fitAct = new FitbitActivity();
+                fitAct.parse(oneActivity);
+                response[i] = fitAct.getParsedString();
+            }
+            return response;
+        }
+        return null;
     }
 
-    public String parseGoals() {
-        return "";
+    /// for each one activity, parse each of its field
+    public String parseOneActivity(JSONObject json) throws JSONException {
+        FitbitActivity fitAct = new FitbitActivity();
+        fitAct.parse(json);
+        String oneActResponse = fitAct.getParsedString();
+        return oneActResponse;
     }
 
-    public String parseSummary() {
-        return "";
+
+    public String parseGoals() throws JSONException {
+        FitbitGoal fitGoal = new FitbitGoal(goalJSONObject);
+        fitGoal.parse();
+        String header = "********** Goals *********\n";
+        return header + fitGoal.getParsedString();
+    }
+
+    public String parseSummary() throws JSONException {
+        Log.e("aaaaa", summaryJSONObject.toString());
+        FitbitSummary fitSum = new FitbitSummary(summaryJSONObject);
+        fitSum.parse();
+        String header = "********** Summary *********\n";
+        return header + fitSum.getParsedString();
     }
 
 } //// ENDS, for daily activity summary
