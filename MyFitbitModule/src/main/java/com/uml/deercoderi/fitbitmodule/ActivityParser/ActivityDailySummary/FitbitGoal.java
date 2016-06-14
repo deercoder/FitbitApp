@@ -1,4 +1,4 @@
-package com.uml.deercoderi.fitbitmodule.ActivityParser;
+package com.uml.deercoderi.fitbitmodule.ActivityParser.ActivityDailySummary;
 
 /***
  *  Created by Chang Liu, for parsing of the activity response(JSON-style)

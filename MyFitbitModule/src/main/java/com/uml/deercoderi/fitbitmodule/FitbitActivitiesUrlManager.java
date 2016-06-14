@@ -40,6 +40,9 @@ public class FitbitActivitiesUrlManager {
     /// this is just for the activity summary
     private static final String FITBIT_ACTIVITIES_URL = "https://api.fitbit.com/1/user/-/activities/date/";
     private static final String FITBIT_ACTIVITIES_TYPES = "https://api.fitbit.com/1/activities.json";
+    private static final String FITBIT_ACTIVITY_LOGGING_LIST = "https://api.fitbit.com/1/user/-/activities/list.json?beforeDate=2016-05-14&sort=desc&limit=10&offset=0";
+    // ends
+
     private static String mDate = "2015-05-14";
     private static String mPeriod = "1d";
     private static String mSartDate = "";
@@ -64,6 +67,10 @@ public class FitbitActivitiesUrlManager {
         return FITBIT_ACTIVITIES_TYPES;
     }
 
+    // get logging list of Fitbit
+    public String getActvityLogging() {
+        return FITBIT_ACTIVITY_LOGGING_LIST;
+    }
 
 
 

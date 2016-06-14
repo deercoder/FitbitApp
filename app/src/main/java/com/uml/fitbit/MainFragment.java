@@ -202,8 +202,39 @@ public class MainFragment extends Fragment {
                             progressDialog.dismiss();
                         }
                     });
+
+            mEasySocialFitbit.getActivitiesLogging(getActivity(),
+                    new EasySocialFitbit.GeneralCallback() {
+                        @Override
+                        public void onComplete(JSONObject jsonObject) {
+                            Log.e("MainFragment", "getActivitiesLoggingCallback's onComplete is clicked!");
+                            if(jsonObject == null){
+                                Log.e("MainFragment", "Here!!!!!");
+                                mResponseTextView.setText("Activity Logging Info is null");
+                            }else{
+
+                                FitbitActivityParser parser = new FitbitActivityParser(jsonObject, FitbitActivityParser.PARSER_ACTIVITY_LOGGING);
+                                String textString = "";
+                                try {
+                                    textString = parser.parseActivityLogging();
+                                } catch(JSONException e) {
+                                    Log.e("MainFragment", "parseActivityLogging error!");
+                                    e.printStackTrace();
+                                }
+                                if (textString != null) {
+                                    String beforeText = mResponseTextView.getText().toString();
+                                    mResponseTextView.setText(beforeText + textString);
+                                }
+                                else {
+                                    mResponseTextView.setText("NULL info");
+                                }
+                            }
+                            progressDialog.dismiss();
+                        }
+                    });
             progressDialog.show();
         }
+
     };
 
     private View.OnClickListener onGetBodyWeightClick = new View.OnClickListener() {

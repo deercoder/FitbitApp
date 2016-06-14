@@ -31,9 +31,10 @@ package com.uml.deercoderi.fitbitmodule;
 
 import android.util.Log;
 
-import com.uml.deercoderi.fitbitmodule.ActivityParser.ActivityTimeSeries;
-import com.uml.deercoderi.fitbitmodule.ActivityParser.DailyActivitySummary;
-import com.uml.deercoderi.fitbitmodule.ActivityParser.FitbitGoal;
+import com.uml.deercoderi.fitbitmodule.ActivityParser.FitbitActivityLogging;
+import com.uml.deercoderi.fitbitmodule.ActivityParser.FitbitActivityTimeSeries;
+import com.uml.deercoderi.fitbitmodule.ActivityParser.FitbitDailyActivitySummary;
+import com.uml.deercoderi.fitbitmodule.ActivityParser.ActivityDailySummary.FitbitGoal;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -52,13 +53,16 @@ public class FitbitActivityParser {
     public static final int PARSER_LIFETIME_STATS = 5;
 
     // parser for daily activity summary
-    private DailyActivitySummary mDailySummary;
+    private FitbitDailyActivitySummary mDailySummary;
 
     // parser for time series activity
-    private ActivityTimeSeries mActivityTimeSeries;
+    private FitbitActivityTimeSeries mActivityTimeSeries;
 
     // parser for goals
     private FitbitGoal mGoals;
+
+    // parser for Activity Logging List
+    private FitbitActivityLogging mActivityLogging;
 
     public FitbitActivityParser() {
         /// empty constuctor, for future extension
@@ -68,12 +72,14 @@ public class FitbitActivityParser {
     public FitbitActivityParser(JSONObject json, int type) {
         switch(type) {
             case PARSER_DAILY_SUMMARY:
-                mDailySummary = new DailyActivitySummary(json);
+                mDailySummary = new FitbitDailyActivitySummary(json);
                 break;
             case PARSER_ACTIVITY_TIME_SERIES:
-                mActivityTimeSeries = new ActivityTimeSeries(json);
+                mActivityTimeSeries = new FitbitActivityTimeSeries(json);
                 break;
             case PARSER_ACTIVITY_LOGGING:
+                mActivityLogging = new FitbitActivityLogging(json);
+                break;
             case PARSER_ACTIVITY_TYPES:
             case PARSER_ACTIVITY_GOALS:
                 mGoals = new FitbitGoal(json);
@@ -115,11 +121,16 @@ public class FitbitActivityParser {
         }
     }
 
-    public void parserGoal() {
-        if (mGoals != null) {
-            //mGoals.parse();
+    /// parse the activity logging
+    public String parseActivityLogging() throws JSONException {
+        if (mActivityLogging != null ) {
+            String loggingText = mActivityLogging.getParsedString();
+            return loggingText;
+        }
+        else {
+            Log.e("FitbitActivityParser", "NULL activity Logging list, error for parsing!");
+            return "";
         }
     }
-
 
 }

@@ -24,6 +24,10 @@ package com.uml.deercoderi.fitbitmodule.ActivityParser;
 
 import android.util.Log;
 
+import com.uml.deercoderi.fitbitmodule.ActivityParser.ActivityDailySummary.FitbitActivity;
+import com.uml.deercoderi.fitbitmodule.ActivityParser.ActivityDailySummary.FitbitGoal;
+import com.uml.deercoderi.fitbitmodule.ActivityParser.ActivityDailySummary.FitbitSummary;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -41,7 +45,7 @@ import org.json.JSONObject;
  * see details of Get Daily Activity FitbitSummary Section:
  *          https://dev.fitbit.com/docs/activity/#get-daily-activity-summary
  */
-public class DailyActivitySummary {
+public class FitbitDailyActivitySummary {
 
     // object for using to parse sub-object
     private FitbitActivity mActivity;        // activity
@@ -59,7 +63,7 @@ public class DailyActivitySummary {
 
 
     /// used the raw response string to construct parser
-    public DailyActivitySummary(JSONObject json) {
+    public FitbitDailyActivitySummary(JSONObject json) {
         rawResponse = json;
 
         // do the pre-parsing when constructing the objects

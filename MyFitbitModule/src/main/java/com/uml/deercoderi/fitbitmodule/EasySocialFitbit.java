@@ -175,6 +175,12 @@ public class EasySocialFitbit {
 
     }
 
+    public void getActivitiesLogging(Context context, final GeneralCallback fetchInfoCallback){
+        String accessToken = EasySocialFitbitPreferenceUtility.getAccessToken(context);
+        GetWebRequest getWebRequest = createGetWebRequest(fetchInfoCallback);
+        getWebRequest.executeRequest(new FitbitActivitiesUrlManager().getActvityLogging(), accessToken);
+    }
+
     public void getBodyWeightInfo(Context context, final GeneralCallback fetchInfoCallback){
         String accessToken = EasySocialFitbitPreferenceUtility.getAccessToken(context);
         GetWebRequest getWebRequest = createGetWebRequest(fetchInfoCallback);

@@ -28,18 +28,18 @@ import org.json.JSONObject;
 /**
  * Created by cliu on 6/9/16.
  */
-public class ActivityTimeSeries {
+public class FitbitActivityTimeSeries {
 
     // raw json object as the response
     private JSONObject rawJSONObject;
 
 
-    public ActivityTimeSeries() {
+    public FitbitActivityTimeSeries() {
         /// empty now, for constructing the time-series parser
     }
 
 
-    public ActivityTimeSeries(JSONObject json) {
+    public FitbitActivityTimeSeries(JSONObject json) {
         rawJSONObject = json;
     }
 
