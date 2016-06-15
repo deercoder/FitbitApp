@@ -64,20 +64,20 @@ public class FitbitLogActivity {
     }
 
     public void parse() throws JSONException {
-        Log.e("aaaaa", "bbbbcccccc");
+        //Log.e("aaaaa", "bbbbcccccc");
         setActiveDuration(LogActivity.getString("activeDuration"));
         setActivityLevel(LogActivity.getJSONArray("activityLevel"));
-        Log.e("aaaaa", "bbbbcccccceeeeeeee");
+        //Log.e("aaaaa", "bbbbcccccceeeeeeee");
         setActivityName(LogActivity.getString("activityName"));
         setActivityTypeId(LogActivity.getString("activityTypeId"));
         setAverageHeartRate(LogActivity.getString("averageHeartRate"));
         setCalorie(LogActivity.getString("calories"));
-        Log.e("aaaaa", "bbbbccccccfffffffffff");
+        //Log.e("aaaaa", "bbbbccccccfffffffffff");
         setCalorieLink(LogActivity.getString("caloriesLink"));
         //setDistance(LogActivity.getString("distance"));
         //setDistanceUnit(LogActivity.getString("distanceUnit"));
         setDuration(LogActivity.getString("duration"));
-        Log.e("aaaaa", "bbbbccccccdddddddd");
+        //Log.e("aaaaa", "bbbbccccccdddddddd");
         setHeartRateLink(LogActivity.getString("heartRateLink"));
         setHeartRateZones(LogActivity.getJSONArray("heartRateZones"));
         setLastModifiedTime(LogActivity.getString("lastModified"));
