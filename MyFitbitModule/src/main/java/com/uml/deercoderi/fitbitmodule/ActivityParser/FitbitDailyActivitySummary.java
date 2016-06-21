@@ -76,6 +76,13 @@ public class FitbitDailyActivitySummary {
             activitiesJSONArray = rawResponse.getJSONArray("activities");
             goalJSONObject = rawResponse.getJSONObject("goals");
             summaryJSONObject = rawResponse.getJSONObject("summary");
+
+            /// use these objects to construct the memeber object
+            mGoals = new FitbitGoal(goalJSONObject);
+            mSummary = new FitbitSummary(summaryJSONObject);
+
+            mGoals.parse();
+            mSummary.parse();
         } catch (JSONException e) {
             Log.e("DailyActivitySummary", "Exception when preparse the raw JSON Object!");
         }
@@ -135,5 +142,24 @@ public class FitbitDailyActivitySummary {
         String header = "********** Summary *********\n";
         return header + fitSum.getParsedString();
     }
+
+    public FitbitSummary getSummary() {
+        if (mSummary != null) {
+            return mSummary;
+        }
+        else {
+            return null;
+        }
+    }
+
+    public FitbitGoal getGoals() {
+        if (mGoals != null) {
+            return mGoals;
+        }
+        else {
+            return null;
+        }
+    }
+
 
 } //// ENDS, for daily activity summary

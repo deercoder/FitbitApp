@@ -12,11 +12,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.uml.deercoderi.fitbitmodule.ActivityParser.ActivityDailySummary.FitbitGoal;
+import com.uml.deercoderi.fitbitmodule.ActivityParser.ActivityDailySummary.FitbitSummary;
 import com.uml.deercoderi.fitbitmodule.EasySocialFitbit;
 import com.uml.deercoderi.fitbitmodule.FitbitActivityParser;
 import com.uwanttolearn.easysocial.EasySocialAuthActivity;
 import com.uwanttolearn.easysocial.EasySocialCredential;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -169,7 +172,7 @@ public class MainFragment extends Fragment {
 
     private View.OnClickListener onGetActivitiesClick = new View.OnClickListener() {
         @Override
-        public void onClick(View v) {
+        public void onClick(final View v) {
             Log.e("MainFragment", "Get activities is clicked!");
 
             mEasySocialFitbit.getActivitiesInfo(getActivity(),
@@ -191,6 +194,93 @@ public class MainFragment extends Fragment {
                                     Log.e("MainFragment", "parseDailySummary error!");
                                     e.printStackTrace();
                                 }
+
+                                /// Now that we don't need to show all texts, just start a new activity
+                                FitbitGoal goal = parser.getGoal();
+                                int goalCaloriesOut = Integer.parseInt(goal.getCaloriesOut());
+                                float goalDistance = Float.valueOf(goal.getDistance());
+                                int goalFloor = Integer.parseInt(goal.getFloors());
+                                int goalStep = Integer.parseInt(goal.getSteps());
+
+                                /// summary
+                                FitbitSummary sum = parser.getSummary();
+                                int summaryFloor = Integer.parseInt(sum.getFloors());
+                                int summaryStep = Integer.parseInt(sum.getSteps());
+                                float perVeryActive = 0;
+                                float permoderateActive = 0;
+                                float perLightActive = 0;
+                                float perSedentaryActive = 0;
+                                float veryActive = 0;
+                                float moderateActive = 0;
+                                float lightActive = 0;
+                                float sedentaryActive = 0;
+
+                                try {
+                                    JSONArray summaryDistanceArray = sum.getDistanceArray();
+                                    int len = summaryDistanceArray.length();
+                                    for (int i = 0; i < len; i++) {
+                                        JSONObject jb = summaryDistanceArray.getJSONObject(i);
+                                        String activity  = jb.getString("activity");
+                                        String distance = jb.getString("distance");
+
+                                        switch(activity) {
+                                            case "veryActive":
+                                                veryActive = Float.valueOf(distance);
+                                                break;
+                                            case "moderatelyActive":
+                                                moderateActive = Float.valueOf(distance);
+                                                break;
+                                            case "lightlyActive":
+                                                lightActive = Float.valueOf(distance);
+                                                break;
+                                            case "sedentaryActive":
+                                                sedentaryActive = Float.valueOf(distance);
+                                                break;
+                                            default:
+                                                break;
+                                        }
+                                    }
+                                } catch(JSONException e) {
+                                    e.printStackTrace();
+                                    Log.e("MainFragment", "JSON Exception!");
+                                }
+
+                                perSedentaryActive = sedentaryActive / (veryActive+moderateActive+lightActive+sedentaryActive);
+                                perLightActive = lightActive / (veryActive+moderateActive+lightActive+sedentaryActive);
+                                permoderateActive = moderateActive / (veryActive+moderateActive+lightActive+sedentaryActive);
+                                perVeryActive = veryActive / (veryActive+moderateActive+lightActive+sedentaryActive);
+
+
+                                Intent intent = new Intent(v.getContext(), ActivitySummary.class);
+                                String MESSAGE_GOAL = "com.uml.fitbit.EXTRA_GOAL";
+                                String GOAL = "CaloriesOut: " + goalCaloriesOut + "\n"
+                                            + "Distance: " + goalDistance + "\n";
+                                String MESSAGE_SUMMARY_FLOOR = "com.uml.fitbit.EXTRA_SUMMARY_FLOOR";
+                                double SUMMARY_FLOOR = (double)summaryFloor / goalFloor * 1.0f;
+                                String MESSAGE_SUMMARY_STEP = "com.uml.fitbit.EXTRA_SUMMARY_STEP";
+                                double SUMMARY_STEP = (double)summaryStep / goalStep * 1.0f;
+
+                                String MESSAGE_SED_PERCENT = "com.uml.fitbit.SED_PER";
+                                String MESSAGE_LIG_PERCENT = "com.uml.fitbit.LIG_PER";
+                                String MESSAGE_MOD_PERCENT = "com.uml.fitbit.MOD_PER";
+                                String MESSAGE_VERY_PERCENT = "com.uml.fitbit.VERY_PER";
+
+                                intent.putExtra(MESSAGE_GOAL, GOAL);
+                                intent.putExtra(MESSAGE_SUMMARY_FLOOR, SUMMARY_FLOOR);
+                                intent.putExtra(MESSAGE_SUMMARY_STEP, SUMMARY_STEP);
+                                intent.putExtra(MESSAGE_SED_PERCENT, perSedentaryActive);
+                                intent.putExtra(MESSAGE_LIG_PERCENT, perLightActive);
+                                intent.putExtra(MESSAGE_MOD_PERCENT, permoderateActive);
+                                intent.putExtra(MESSAGE_VERY_PERCENT, perVeryActive);
+
+                                Log.e("MainFragment", "summary floor " + SUMMARY_FLOOR + "goal " + goalFloor + " summary " + summaryFloor);
+                                Log.e("MainFragment", "summary step " + SUMMARY_STEP + "goal " + goalStep + " summary " + summaryStep);
+                                Log.e("MainFragement", "sed: " + perSedentaryActive + " lig: "
+                                    + perLightActive + " mod: " + permoderateActive
+                                    + " very: " + perVeryActive);
+
+                                startActivity(intent);
+/*
                                 if (textString != null) {
 
                                     mResponseTextView.setText(textString);
@@ -198,6 +288,7 @@ public class MainFragment extends Fragment {
                                 else {
                                     mResponseTextView.setText("NULL info");
                                 }
+*/
                             }
                             progressDialog.dismiss();
                         }

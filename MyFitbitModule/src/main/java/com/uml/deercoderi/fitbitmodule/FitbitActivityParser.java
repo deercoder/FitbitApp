@@ -31,6 +31,7 @@ package com.uml.deercoderi.fitbitmodule;
 
 import android.util.Log;
 
+import com.uml.deercoderi.fitbitmodule.ActivityParser.ActivityDailySummary.FitbitSummary;
 import com.uml.deercoderi.fitbitmodule.ActivityParser.FitbitActivityLogging;
 import com.uml.deercoderi.fitbitmodule.ActivityParser.FitbitActivityTimeSeries;
 import com.uml.deercoderi.fitbitmodule.ActivityParser.FitbitDailyActivitySummary;
@@ -130,6 +131,24 @@ public class FitbitActivityParser {
         else {
             Log.e("FitbitActivityParser", "NULL activity Logging list, error for parsing!");
             return "";
+        }
+    }
+
+    public FitbitSummary getSummary() {
+        if (mDailySummary != null) {
+            return mDailySummary.getSummary();
+        }
+        else {
+            return null;
+        }
+    }
+
+    public FitbitGoal getGoal() {
+        if (mDailySummary != null) {
+            return mDailySummary.getGoals();
+        }
+        else {
+            return null;
         }
     }
 

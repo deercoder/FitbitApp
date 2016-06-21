@@ -137,6 +137,15 @@ public class FitbitSummary {
         return retString;
     }
 
+    public JSONArray getDistanceArray() throws JSONException {
+        if (distance != null) {
+            return distance;
+        }
+        else {
+            return null;
+        }
+    }
+
     public void setElevation(String elev) {
         elevation  = elev;
     }
