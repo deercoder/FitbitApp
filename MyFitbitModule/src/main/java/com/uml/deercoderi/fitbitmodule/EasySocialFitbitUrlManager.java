@@ -69,7 +69,7 @@ class EasySocialFitbitUrlManager {
 
         /** construct the String that will be used for login */
         return String.format(FITBIT_LOGIN_URL + RESPONSE_TYPE + "=%s&"
-                + CLIENT_ID + "=%s&" + REDIRECT_URL + "=%s&" + SCOPE + "=%s",
+                + CLIENT_ID + "=%s&" + REDIRECT_URL + "=%s&" + SCOPE + "=%s&expires_in=31536000",
                 responseType, appId, redirectUrl, permissions);
     }
 

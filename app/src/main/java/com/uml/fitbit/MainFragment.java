@@ -252,9 +252,8 @@ public class MainFragment extends Fragment {
 
 
                                 Intent intent = new Intent(v.getContext(), ActivitySummary.class);
-                                String MESSAGE_GOAL = "com.uml.fitbit.EXTRA_GOAL";
-                                String GOAL = "CaloriesOut: " + goalCaloriesOut + "\n"
-                                            + "Distance: " + goalDistance + "\n";
+                                String MESSAGE_GOAL_CAL = "com.uml.fitbit.EXTRA_GOAL_CALORIE_OUT";
+                                String MESSAGE_GOAL_DISTANCE = "com.uml.fitbit.EXTRA_GOAL_DISTANCE";
                                 String MESSAGE_SUMMARY_FLOOR = "com.uml.fitbit.EXTRA_SUMMARY_FLOOR";
                                 double SUMMARY_FLOOR = (double)summaryFloor / goalFloor * 1.0f;
                                 String MESSAGE_SUMMARY_STEP = "com.uml.fitbit.EXTRA_SUMMARY_STEP";
@@ -265,7 +264,8 @@ public class MainFragment extends Fragment {
                                 String MESSAGE_MOD_PERCENT = "com.uml.fitbit.MOD_PER";
                                 String MESSAGE_VERY_PERCENT = "com.uml.fitbit.VERY_PER";
 
-                                intent.putExtra(MESSAGE_GOAL, GOAL);
+                                intent.putExtra(MESSAGE_GOAL_CAL, goalCaloriesOut);
+                                intent.putExtra(MESSAGE_GOAL_DISTANCE, goalDistance);
                                 intent.putExtra(MESSAGE_SUMMARY_FLOOR, SUMMARY_FLOOR);
                                 intent.putExtra(MESSAGE_SUMMARY_STEP, SUMMARY_STEP);
                                 intent.putExtra(MESSAGE_SED_PERCENT, perSedentaryActive);

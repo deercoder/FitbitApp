@@ -38,6 +38,9 @@ public class ActivitySummary extends ActionBarActivity {
     String MESSAGE_MOD_PERCENT = "com.uml.fitbit.MOD_PER";
     String MESSAGE_VERY_PERCENT = "com.uml.fitbit.VERY_PER";
 
+    String MESSAGE_GOAL_CAL = "com.uml.fitbit.EXTRA_GOAL_CALORIE_OUT";
+    String MESSAGE_GOAL_DISTANCE = "com.uml.fitbit.EXTRA_GOAL_DISTANCE";
+
     String TAG = "ActivitySummary";
 
     @Override
@@ -48,7 +51,8 @@ public class ActivitySummary extends ActionBarActivity {
 
 
         Intent data = getIntent();
-        String goal = data.getStringExtra(MESSAGE_GOAL);
+        int goalCalorieOut = data.getIntExtra(MESSAGE_GOAL_CAL, 0);
+        float goalDistance = data.getFloatExtra(MESSAGE_GOAL_DISTANCE, 0.0f);
         double summaryFloor = data.getDoubleExtra(MESSAGE_SUMMARY_FLOOR, 0.0);
         double summaryStep = data.getDoubleExtra(MESSAGE_SUMMARY_STEP, 0.0);
 
@@ -57,21 +61,77 @@ public class ActivitySummary extends ActionBarActivity {
         float modPercent = data.getFloatExtra(MESSAGE_MOD_PERCENT, 0.0f);
         float veryPercent = data.getFloatExtra(MESSAGE_VERY_PERCENT, 0.0f);
 
-        Log.e(TAG, goal);
+        Log.e(TAG, "goal calorie: " + goalCalorieOut + " goal distance: " + goalDistance);
         Log.e(TAG, "" + summaryFloor);
         Log.e(TAG, "" + summaryStep);
         Log.e(TAG, "sed: " + sedPercent + " light:" + ligPercent + " moderate: " + modPercent + " very: " + veryPercent);
 
-        String sumFloorString = "Summary Floors: \n" + summaryFloor;
-        String sumStepString = "Summary Step: \n" + summaryStep;
 
-        String percentSedentaryActive = "Sendentary Active: " + String.format("%.2f",sedPercent*100)+"%";
-        String percentLightActive = "Light Active: " + String.format("%.2f",ligPercent*100)+"%";
-        String percentModerateActive = "Moderate Active: " + String.format("%.2f",modPercent*100)+"%";
-        String percentVeryActive = "Very Active: " + String.format("%.2f",veryPercent*100)+"%";
+        ///// for calorie goal
+        String goalCalorieOutString = "(当日)卡路里消耗目标: " + goalCalorieOut + " kCal";
 
+        ///// for distance goal
+        String goalDistanceString = "(当日)运动距离目标: " + goalDistance + " km";
+
+
+        //// for summary/goal, ** floors ***
+        String sumFloorString = "(当日)上下楼梯统计比例: \n" +  String.format("%.2f",summaryFloor*100)+"%";
+
+        if (summaryFloor > 1) {
+            sumFloorString += "(非常好, 您已经完成预定的上下楼目标!)";
+        }
+        else if (summaryFloor > 0.5 && summaryFloor < 0.8) {
+            sumFloorString += "(不错, 您接近完成目标,继续保持!)";
+        }
+        else if (summaryFloor < 0.5) {
+            sumFloorString += "(加油, 离预定的上下楼目标还有一段距离, 建议增加此运动!)";
+        }
+
+
+        //// for summary/goal, ** steps ***
+        String sumStepString = "(当日)步数统计比例: \n" + String.format("%.2f",summaryStep*100)+"%";
+        if (summaryStep > 1) {
+            sumStepString += "(非常好, 您已经完成预定的步数目标!)";
+        }
+        else if (summaryStep > 0.5) {
+            sumStepString += "(不错, 您接近完成目标,继续保持!)";
+        }
+        else if (summaryStep < 0.5) {
+            sumStepString += "(加油, 离预定的上下楼目标还有一段距离, 建议增加此运动!)";
+        }
+
+
+        /// for activity statistics, ** activity **
+        String percentSedentaryActive = "静止活动(比例): " + String.format("%.2f",sedPercent*100)+"%";
+
+        String percentLightActive = "轻微运动(比例): " + String.format("%.2f",ligPercent*100)+"%";
+        String percentModerateActive = "适度活动(比例): " + String.format("%.2f",modPercent*100)+"%";
+        String percentVeryActive = "剧烈运动(比例): " + String.format("%.2f",veryPercent*100)+"%";
+
+        if (sedPercent > 0.5) {
+            percentSedentaryActive += "(你静坐太多,需要增强锻炼!)";
+        }
+
+        if (ligPercent < 0.3) {
+            percentLightActive += "(运动太少,增加适度运动!)";
+        }
+        else if (ligPercent > 0.4) {
+            percentLightActive += "(轻微运动太多,请适当增加适度运动!)";
+        }
+        if (modPercent > 0.15) {
+            percentModerateActive += "(运动过多,请注意休息!)";
+        }
+        else if (modPercent < 0.05) {
+            percentModerateActive += "(适度运动太少,适当的活动有助于宝宝健康,建议增加活动!)";
+        }
+
+        if (veryPercent > 0.05) {
+            percentVeryActive += "(剧烈运动太多,注意胎儿安全,请不要剧烈运动!)";
+        }
+
+        /// listview to show the content
         final ListView listview = (ListView) findViewById(R.id.listview);
-        String[] values = new String[] {goal, sumFloorString, sumStepString, percentSedentaryActive,
+        String[] values = new String[] {goalCalorieOutString, goalDistanceString, sumFloorString, sumStepString, percentSedentaryActive,
             percentLightActive, percentModerateActive, percentVeryActive};
 
 
